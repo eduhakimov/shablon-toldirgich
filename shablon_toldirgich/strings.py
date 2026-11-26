@@ -1,0 +1,182 @@
+"""Dastur matnlari: uz / ru / en."""
+
+
+def _t(uz, ru, en):
+    return {"uz": uz, "ru": ru, "en": en}
+
+
+STRINGS = {
+    "nav_fill": _t("Hujjat tayyorlash", "Подготовка документа", "New document"),
+    "nav_profiles": _t("Profillar", "Профили", "Profiles"),
+    "nav_templates": _t("Shablonlar", "Шаблоны", "Templates"),
+    "nav_batch": _t("Excel'dan ommaviy", "Пакетно из Excel", "Batch from Excel"),
+
+    # to'ldirish
+    "templates": _t("Shablonlar", "Шаблоны", "Templates"),
+    "search_templates": _t("Qidirish...", "Поиск...", "Search..."),
+    "open_docx": _t("Boshqa .docx faylni ochish...", "Открыть другой .docx...", "Open another .docx..."),
+    "no_template": _t("Chapdan shablonni tanlang", "Выберите шаблон слева", "Choose a template on the left"),
+    "person": _t("Kim uchun:", "Для кого:", "For:"),
+    "no_profile": _t("Profilsiz", "Без профиля", "No profile"),
+    "profiles_locked": _t("Profillar qulflangan", "Профили заблокированы", "Profiles are locked"),
+    "col_placeholder": _t("O'rinbosar", "Поле шаблона", "Placeholder"),
+    "col_field": _t("Ma'lumot", "Данные", "Data"),
+    "col_value": _t("Qiymat", "Значение", "Value"),
+    "tab_fields": _t("Maydonlar", "Поля", "Fields"),
+    "tab_preview": _t("Ko'rinish", "Просмотр", "Preview"),
+    "custom_field": _t("Qo'lda kiritiladi", "Вводится вручную", "Entered manually"),
+    "enter_value": _t("Qiymatni kiriting", "Введите значение", "Enter a value"),
+    "secret_hint": _t("Ko'rish va tahrirlash uchun \"Maxfiy ma'lumotni ko'rsatish\" ni yoqing",
+                      "Чтобы увидеть и изменить, включите «Показать скрытые данные»",
+                      "Turn on \"Show hidden data\" to view and edit"),
+    "show_secret": _t("Maxfiy ma'lumotni ko'rsatish", "Показать скрытые данные", "Show hidden data"),
+    "n_fields": _t("{n} ta maydon", "полей: {n}", "{n} fields"),
+    "n_missing": _t("{n} tasi bo'sh", "не заполнено: {n}", "{n} empty"),
+    "no_placeholders": _t("Shablonda {{...}} o'rinbosarlari topilmadi.", "В шаблоне нет полей {{...}}.",
+                          "No {{...}} placeholders found in the template."),
+    "save_folder": _t("Papka", "Папка", "Folder"),
+    "file_name": _t("Fayl nomi", "Имя файла", "File name"),
+    "also_pdf": _t("PDF ham yaratish", "Также создать PDF", "Also create PDF"),
+    "pdf_unavailable": _t("PDF uchun Microsoft Word yoki LibreOffice kerak", "Для PDF нужен Microsoft Word или "
+                          "LibreOffice", "PDF requires Microsoft Word or LibreOffice"),
+    "make_document": _t("Hujjatni yaratish", "Создать документ", "Create document"),
+    "open_document": _t("Ochish", "Открыть", "Open"),
+    "created": _t("Yaratildi: {names}", "Создано: {names}", "Created: {names}"),
+    "ask_empty": _t("{n} ta maydon bo'sh qoladi ({names}). Shunday davom etilsinmi?",
+                    "Не заполнено полей: {n} ({names}). Продолжить?",
+                    "{n} fields are empty ({names}). Continue anyway?"),
+
+    # profillar
+    "people": _t("Shaxslar", "Люди", "People"),
+    "duplicate": _t("Nusxa", "Копия", "Copy"),
+    "protect_store": _t("Parol bilan himoya", "Защита паролем", "Password protection"),
+    "store_plain": _t("Profillar kompyuterda shifrlanmagan holda saqlanadi.",
+                      "Профили хранятся на компьютере без шифрования.",
+                      "Profiles are stored on this computer unencrypted."),
+    "store_encrypted": _t("Profillar parol bilan shifrlangan.", "Профили зашифрованы паролем.",
+                          "Profiles are encrypted with a password."),
+    "store_locked_title": _t("Profillar qulflangan", "Профили заблокированы", "Profiles are locked"),
+    "store_locked_text": _t("Profillarni ko'rish va ishlatish uchun parolni kiriting.",
+                            "Введите пароль, чтобы просматривать и использовать профили.",
+                            "Enter the password to view and use profiles."),
+    "password": _t("Parol", "Пароль", "Password"),
+    "unlock": _t("Ochish", "Открыть", "Unlock"),
+    "wrong_password": _t("Parol noto'g'ri.", "Неверный пароль.", "Wrong password."),
+    "profiles_empty": _t("Hali profil yo'q. \"Qo'shish\" tugmasini bosib, o'zingiz yoki oila a'zolaringiz "
+                         "ma'lumotlarini kiriting. Ular shablonlarga avtomatik qo'yiladi.",
+                         "Профилей пока нет. Нажмите «Добавить» и введите данные о себе или членах семьи. "
+                         "Они будут подставляться в шаблоны автоматически.",
+                         "No profiles yet. Press Add and enter details for yourself or family members. "
+                         "They are filled into templates automatically."),
+    "profile_title": _t("Profil nomi", "Название профиля", "Profile name"),
+    "profile_title_ph": _t("masalan: Men, Onam, O'g'lim", "например: Я, Мама, Сын", "e.g. Me, Mother, Son"),
+    "new_profile": _t("Yangi profil", "Новый профиль", "New profile"),
+    "grp_personal": _t("Shaxsiy ma'lumotlar", "Личные данные", "Personal details"),
+    "grp_contact": _t("Aloqa", "Контакты", "Contacts"),
+    "grp_docs": _t("Hujjatlar", "Документы", "Documents"),
+    "grp_work": _t("Ish va o'qish", "Работа и учёба", "Work and study"),
+    "grp_boss": _t("Ariza kimga yoziladi (rahbar)", "Кому адресовано (руководитель)", "Addressee (manager)"),
+    "warn_passport": _t("Pasport odatda 2 harf va 7 raqamdan iborat (AA1234567).",
+                        "Паспорт обычно: 2 буквы и 7 цифр (AA1234567).",
+                        "A passport number is usually 2 letters and 7 digits (AA1234567)."),
+    "warn_jshshir": _t("JSHSHIR 14 ta raqamdan iborat.", "ПИНФЛ состоит из 14 цифр.", "PINFL has 14 digits."),
+    "profile_saved": _t("Saqlandi", "Сохранено", "Saved"),
+    "ask_delete_profile": _t("\"{name}\" profili o'chirilsinmi?", "Удалить профиль «{name}»?",
+                             "Delete profile \"{name}\"?"),
+    "pw_set": _t("Parol qo'yish...", "Установить пароль...", "Set password..."),
+    "pw_change": _t("Parolni o'zgartirish...", "Сменить пароль...", "Change password..."),
+    "pw_remove": _t("Parolni olib tashlash", "Снять пароль", "Remove password"),
+    "pw_new": _t("Yangi parol:", "Новый пароль:", "New password:"),
+    "pw_repeat": _t("Parolni takrorlang:", "Повторите пароль:", "Repeat the password:"),
+    "pw_mismatch": _t("Parollar mos kelmadi.", "Пароли не совпадают.", "Passwords do not match."),
+    "pw_set_done": _t("Profillar shifrlandi. Dastur keyingi ochilishida parol so'raladi. Parolni unutsangiz, "
+                      "ma'lumotlarni tiklab bo'lmaydi.",
+                      "Профили зашифрованы. При следующем запуске потребуется пароль. Забытый пароль "
+                      "восстановить нельзя.",
+                      "Profiles are encrypted. The password will be required next time. A forgotten password "
+                      "cannot be recovered."),
+    "pw_remove_ask": _t("Shifrlash olib tashlansinmi? Profillar ochiq holda saqlanadi.",
+                        "Снять шифрование? Профили будут храниться в открытом виде.",
+                        "Remove encryption? Profiles will be stored unencrypted."),
+
+    # shablonlar
+    "col_name": _t("Nomi", "Название", "Name"),
+    "col_category": _t("Turi", "Тип", "Type"),
+    "col_source": _t("Manba", "Источник", "Source"),
+    "col_fields": _t("Maydonlar", "Поля", "Fields"),
+    "col_meaning": _t("Nima qo'yiladi", "Что подставляется", "Filled with"),
+    "cat_ariza": _t("Arizalar", "Заявления", "Applications"),
+    "cat_xat": _t("Xatlar", "Записки", "Letters"),
+    "cat_shaxsiy": _t("Shaxsiy hujjatlar", "Личные документы", "Personal documents"),
+    "cat_boshqa": _t("Boshqa", "Другое", "Other"),
+    "src_builtin": _t("Tayyor", "Встроенный", "Built-in"),
+    "src_user": _t("Mening", "Мой", "Mine"),
+    "add_template": _t("Qo'shish...", "Добавить...", "Add..."),
+    "open_in_word": _t("Word'da ochish", "Открыть в Word", "Open in Word"),
+    "make_copy": _t("Nusxa olish", "Сделать копию", "Make a copy"),
+    "copy_suffix": _t("nusxa", "копия", "copy"),
+    "rename": _t("Nomini o'zgartirish", "Переименовать", "Rename"),
+    "remove": _t("Olib tashlash", "Убрать", "Remove"),
+    "use_template": _t("To'ldirish", "Заполнить", "Fill in"),
+    "ask_remove_template": _t("\"{name}\" shabloni kutubxonadan olib tashlansinmi? Asl fayl o'z joyida qoladi.",
+                              "Убрать шаблон «{name}» из библиотеки? Исходный файл останется на месте.",
+                              "Remove \"{name}\" from the library? The original file stays where it is."),
+    "how_to_make": _t("O'z shabloningizni yaratish", "Как сделать свой шаблон", "Making your own template"),
+    "how_to_text": _t("Word'da oddiy hujjat yozing va o'zgaradigan joylarga qo'sh jingalak qavsda nom qo'ying, "
+                      "masalan {{FISH}} yoki {{SANA}}. Formatlash (shrift, qalinlik) saqlanadi. Ro'yxatda yo'q "
+                      "nomlar (masalan {{KURS}}) to'ldirishda qo'lda so'raladi.",
+                      "Напишите документ в Word и в изменяемых местах поставьте имя в двойных фигурных скобках, "
+                      "например {{FISH}} или {{SANA}}. Оформление сохраняется. Имена не из списка (например "
+                      "{{KURS}}) запрашиваются при заполнении.",
+                      "Write a normal Word document and put a name in double braces where text changes, e.g. "
+                      "{{FISH}} or {{SANA}}. Formatting is kept. Names not in the list (e.g. {{KURS}}) are asked "
+                      "for when filling in."),
+    "copy_hint": _t("Nusxalash uchun ikki marta bosing.", "Дважды щёлкните, чтобы скопировать.",
+                    "Double-click to copy."),
+
+    # ommaviy
+    "template": _t("Shablon", "Шаблон", "Template"),
+    "excel_file": _t("Jadval", "Таблица", "Spreadsheet"),
+    "excel_ph": _t("Excel (.xlsx) yoki CSV fayl", "Файл Excel (.xlsx) или CSV", "Excel (.xlsx) or CSV file"),
+    "sheet": _t("Varaq", "Лист", "Sheet"),
+    "batch_help": _t("Birinchi qator ustun nomlari bo'lishi kerak (masalan: Familiya, Ism, Guruh). Har bir "
+                     "qatordan alohida hujjat yaratiladi.",
+                     "В первой строке должны быть названия столбцов (например: Фамилия, Имя, Группа). Для "
+                     "каждой строки создаётся отдельный документ.",
+                     "The first row must hold column names (e.g. Familiya, Ism, Guruh). One document is created "
+                     "per row."),
+    "data_rows": _t("Ma'lumotlar", "Данные", "Data"),
+    "mapping": _t("Moslashtirish", "Сопоставление", "Mapping"),
+    "col_column": _t("Ustun", "Столбец", "Column"),
+    "col_default": _t("Doimiy qiymat", "Постоянное значение", "Fixed value"),
+    "col_none": _t("(yo'q)", "(нет)", "(none)"),
+    "col_auto": _t("(avtomatik)", "(автоматически)", "(automatic)"),
+    "auto_value": _t("Avtomatik hisoblanadi", "Вычисляется автоматически", "Calculated automatically"),
+    "name_pattern": _t("Fayl nomi", "Имя файла", "File name"),
+    "make_all": _t("Hujjatlarni yaratish", "Создать документы", "Create documents"),
+    "n_rows": _t("{n} ta qator", "строк: {n}", "{n} rows"),
+    "need_excel": _t("Shablon va jadvalni tanlang.", "Выберите шаблон и таблицу.",
+                     "Choose a template and a spreadsheet."),
+    "batch_done": _t("{n} ta hujjat yaratildi.", "Создано документов: {n}.", "{n} documents created."),
+
+    # xatolar
+    "err_generic": _t("Xatolik: {detail}", "Ошибка: {detail}", "Error: {detail}"),
+    "err_permission": _t("Faylga yozib bo'lmadi. U Word'da ochiq bo'lishi mumkin.",
+                         "Не удалось записать файл. Возможно, он открыт в Word.",
+                         "Could not write the file. It may be open in Word."),
+    "err_open_docx": _t("\"{name}\" ni ochib bo'lmadi. Fayl .docx formatida ekanini tekshiring.",
+                        "Не удалось открыть «{name}». Проверьте, что файл в формате .docx.",
+                        "Could not open \"{name}\". Make sure it is a .docx file."),
+    "err_same_file": _t("Natija shablon ustiga yozilmaydi.", "Результат не может перезаписать шаблон.",
+                        "The result cannot overwrite the template."),
+    "err_excel": _t("Jadvalni o'qib bo'lmadi: {detail}", "Не удалось прочитать таблицу: {detail}",
+                    "Could not read the spreadsheet: {detail}"),
+    "err_excel_empty": _t("Jadvalda ma'lumot yo'q.", "В таблице нет данных.", "The spreadsheet is empty."),
+    "err_pdf_word": _t("Word orqali PDF yaratib bo'lmadi: {detail}", "Не удалось создать PDF через Word: {detail}",
+                       "Could not create PDF with Word: {detail}"),
+    "err_pdf_none": _t("PDF uchun Microsoft Word yoki LibreOffice o'rnatilmagan. .docx fayl yaratildi.",
+                       "Для PDF не установлен Microsoft Word или LibreOffice. Файл .docx создан.",
+                       "Microsoft Word or LibreOffice is not installed for PDF. The .docx file was created."),
+    "err_pdf_lo": _t("LibreOffice orqali PDF yaratib bo'lmadi.", "Не удалось создать PDF через LibreOffice.",
+                     "Could not create PDF with LibreOffice."),
+}

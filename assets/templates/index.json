@@ -1,0 +1,101 @@
+[
+ {
+  "file": "ishga_qabul.docx",
+  "category": "ariza",
+  "title": {
+   "uz": "Ishga qabul qilish to'g'risida ariza",
+   "ru": "Заявление о приёме на работу",
+   "en": "Application for employment"
+  }
+ },
+ {
+  "file": "tatil.docx",
+  "category": "ariza",
+  "title": {
+   "uz": "Mehnat ta'tili berish to'g'risida ariza",
+   "ru": "Заявление на отпуск",
+   "en": "Leave application"
+  }
+ },
+ {
+  "file": "ishdan_boshash.docx",
+  "category": "ariza",
+  "title": {
+   "uz": "Ishdan bo'shash to'g'risida ariza",
+   "ru": "Заявление об увольнении",
+   "en": "Resignation letter"
+  }
+ },
+ {
+  "file": "malumotnoma_sorash.docx",
+  "category": "ariza",
+  "title": {
+   "uz": "Ish joyidan ma'lumotnoma so'rash",
+   "ru": "Запрос справки с места работы",
+   "en": "Request for an employment certificate"
+  }
+ },
+ {
+  "file": "ariza_umumiy.docx",
+  "category": "ariza",
+  "title": {
+   "uz": "Ariza (umumiy shakl)",
+   "ru": "Заявление (общая форма)",
+   "en": "Application (general)"
+  }
+ },
+ {
+  "file": "talaba_arizasi.docx",
+  "category": "ariza",
+  "title": {
+   "uz": "Talaba arizasi",
+   "ru": "Заявление студента",
+   "en": "Student application"
+  }
+ },
+ {
+  "file": "tushuntirish_xati.docx",
+  "category": "xat",
+  "title": {
+   "uz": "Tushuntirish xati",
+   "ru": "Объяснительная записка",
+   "en": "Explanatory note"
+  }
+ },
+ {
+  "file": "bildirishnoma.docx",
+  "category": "xat",
+  "title": {
+   "uz": "Bildirishnoma",
+   "ru": "Докладная записка",
+   "en": "Memo to management"
+  }
+ },
+ {
+  "file": "ishonchnoma.docx",
+  "category": "boshqa",
+  "title": {
+   "uz": "Ishonchnoma",
+   "ru": "Доверенность",
+   "en": "Power of attorney"
+  }
+ },
+ {
+  "file": "rezyume.docx",
+  "category": "shaxsiy",
+  "title": {
+   "uz": "Rezyume",
+   "ru": "Резюме",
+   "en": "CV / resume"
+  }
+ },
+ {
+  "file": "obyektivka.docx",
+  "category": "shaxsiy",
+  "title": {
+   "uz": "Ma'lumotnoma (obyektivka)",
+   "ru": "Объективка (личная справка)",
+   "en": "Personal record (obyektivka)"
+  }
+ }
+]

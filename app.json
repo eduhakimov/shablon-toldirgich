@@ -1,0 +1,117 @@
+{
+  "slug": "shablon-toldirgich",
+  "exe_name": "ShablonToldirgich",
+  "version": "1.0.0",
+  "accent": "#2c5f8d",
+  "icon_text": "{}",
+  "folder": "Ariza va shablon to'ldirgich",
+  "name": {
+    "uz": "Ariza va shablon to'ldirgich",
+    "ru": "Заполнение заявлений и шаблонов",
+    "en": "Template Filler"
+  },
+  "description": {
+    "uz": "Word (.docx) shablonlarini saqlangan shaxsiy ma'lumotlar bilan to'ldiruvchi oflayn dastur: profillar, tayyor o'zbekcha arizalar, formatni saqlab to'ldirish, PDF va Excel'dan ommaviy yaratish.",
+    "ru": "Офлайн-программа для заполнения шаблонов Word (.docx) сохранёнными личными данными: профили, готовые заявления на узбекском, заполнение с сохранением оформления, PDF и пакетное создание из Excel.",
+    "en": "An offline app that fills Word (.docx) templates with saved personal details: profiles, ready-made Uzbek applications, formatting-preserving fill, PDF export and batch generation from Excel."
+  },
+  "features": {
+    "uz": [
+      "Bir nechta profil (o'zingiz, oila a'zolari): F.I.Sh., tug'ilgan sana, manzil, pasport, JSHSHIR va boshqalar",
+      "Profillarni parol bilan shifrlash (AES, Fernet)",
+      "Shablondagi {{O'RINBOSAR}} larni avtomatik topish va profil maydonlariga moslash",
+      "Formatni saqlab to'ldirish: bo'lingan runlar, jadvallar, kolontitullar, matn bloklari",
+      "11 ta tayyor shablon: ishga qabul, ta'til, ishdan bo'shash, ma'lumotnoma, tushuntirish xati, bildirishnoma, ishonchnoma, rezyume, obyektivka va boshqalar",
+      "Microsoft Word orqali PDF",
+      "Excel/CSV jadvalidan ommaviy yaratish",
+      "Shablonlar kutubxonasi",
+      "To'liq oflayn; o'zbek, rus, ingliz tillari"
+    ],
+    "ru": [
+      "Несколько профилей (вы, члены семьи): ФИО, дата рождения, адрес, паспорт, ПИНФЛ и др.",
+      "Шифрование профилей паролем (AES, Fernet)",
+      "Автоматический поиск полей {{ПОЛЕ}} и сопоставление с профилем",
+      "Заполнение с сохранением оформления: разбитые фрагменты, таблицы, колонтитулы, надписи",
+      "11 готовых шаблонов: приём на работу, отпуск, увольнение, справка, объяснительная, докладная, доверенность, резюме, объективка и др.",
+      "PDF через Microsoft Word",
+      "Пакетное создание из таблицы Excel/CSV",
+      "Библиотека шаблонов",
+      "Полностью офлайн; узбекский, русский, английский"
+    ],
+    "en": [
+      "Several profiles (you, family members): name, birth date, address, passport, PINFL and more",
+      "Optional password encryption of profiles (AES, Fernet)",
+      "Finds {{PLACEHOLDERS}} automatically and maps them to profile fields",
+      "Formatting-preserving fill: split runs, tables, headers/footers, text boxes",
+      "11 ready-made Uzbek templates: employment, leave, resignation, certificate request, explanatory note, memo, power of attorney, CV, obyektivka and more",
+      "PDF via Microsoft Word",
+      "Batch generation from an Excel/CSV sheet",
+      "Template library",
+      "Fully offline; Uzbek, Russian, English"
+    ]
+  },
+  "category": "Hujjatlar / ofis",
+  "min_os": "Windows 10 (1809+) / Windows 11, x64",
+  "build": {
+    "mode": "onefile",
+    "collect_all": ["docx"],
+    "hidden_imports": [
+      "win32com.client",
+      "pythoncom",
+      "cryptography.fernet"
+    ],
+    "excludes": [
+      "numpy",
+      "matplotlib",
+      "scipy",
+      "pandas",
+      "faster_whisper",
+      "ctranslate2",
+      "onnxruntime",
+      "sounddevice",
+      "cv2",
+      "IPython",
+      "pytest",
+      "PySide6.QtQml",
+      "PySide6.QtQuick",
+      "PySide6.QtMultimedia",
+      "PySide6.QtNetwork",
+      "reportlab",
+      "pikepdf",
+      "pypdfium2",
+      "PIL.ImageQt"
+    ]
+  },
+  "font": "Calibri",
+  "palette": {
+    "light": {
+      "bg": "#f5f2ea",
+      "surface": "#fffdf8",
+      "surface2": "#efe9dd",
+      "border": "#ddd5c4",
+      "text": "#26231d",
+      "muted": "#756f60",
+      "hover": "#ece5d6"
+    },
+    "dark": {
+      "bg": "#1a1916",
+      "surface": "#23211d",
+      "surface2": "#2c2a25",
+      "border": "#3d3a33",
+      "text": "#ece7dc",
+      "muted": "#a59e8e",
+      "hover": "#322f29"
+    }
+  },
+  "topics": [
+    "docx",
+    "templates",
+    "mail-merge",
+    "word",
+    "offline"
+  ],
+  "screenshot_size": [
+    1180,
+    760
+  ]
+}

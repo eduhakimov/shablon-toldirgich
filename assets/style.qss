@@ -1,0 +1,23 @@
+QFrame#TopBar { background: {surface}; border-bottom: 1px solid {border}; }
+QLabel#Brand { font-family: "Cambria"; font-size: 14pt; font-weight: 600; color: {accent}; padding-bottom: 8px; }
+QListWidget#TopNav { background: transparent; border: none; outline: 0; }
+QListWidget#TopNav::item { color: {muted}; padding: 6px 14px; border-bottom: 3px solid transparent; margin-right: 4px; }
+QListWidget#TopNav::item:hover { color: {text}; }
+QListWidget#TopNav::item:selected { color: {text}; background: transparent; border-bottom: 3px solid {accent}; font-weight: 600; }
+QLabel#Title, QLabel#SectionTitle { font-family: "Cambria"; }
+QLabel#SectionTitle { font-size: 12pt; }
+QFrame#Card { border-radius: 6px; }
+QPushButton { border-radius: 14px; padding: 6px 16px; }
+QPushButton#Primary { border-radius: 16px; padding: 8px 22px; }
+QLineEdit, QComboBox, QSpinBox { border-radius: 4px; }
+QLabel#FieldLabel { color: {muted}; font-size: 9pt; }
+QLabel#Warn { color: #b4541a; }
+QListWidget#TemplateList { border: none; background: transparent; }
+QListWidget#TemplateList::item { padding: 6px 6px; border-radius: 4px; }
+QListWidget#TemplateList::item:disabled { color: {muted}; padding-top: 10px; }
+QListWidget#TemplateList::item:selected { background: {accent}; color: white; }
+QTextBrowser#Paper { background: #fffdf8; color: #222; border: 1px solid {border}; padding: 18px 26px; }
+QTabWidget::pane { border-radius: 4px; }
+QSplitter::handle { background: transparent; width: 10px; }
+QListWidget#PeopleList::item { padding: 7px 6px; border-radius: 4px; }
+QListWidget#PeopleList::item:selected { background: {accent}; color: white; }
