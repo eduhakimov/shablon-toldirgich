@@ -1,0 +1,463 @@
+{
+ "nom": "Ariza va shablon to‘ldirgich",
+ "maqola": {
+  "udk": "004.42:004.91",
+  "sarlavha": {
+   "uz": "Word shablonlarini shaxsiy ma’lumotlar profillari asosida formatni saqlagan holda avtomatik to‘ldiruvchi oflayn dasturiy vosita: arxitektura va amalga oshirish",
+   "ru": "Офлайн-программное средство автоматического заполнения шаблонов Word на основе профилей персональных данных с сохранением форматирования: архитектура и реализация",
+   "en": "An offline software tool for format-preserving automatic filling of Word templates from personal data profiles: architecture and implementation"
+  },
+  "annotatsiya": {
+   "uz": "Maqolada ariza, tushuntirish xati, ishonchnoma, rezyume va obyektivka kabi hujjatlarni Word (.docx) shablonlari asosida tayyorlashni avtomatlashtiruvchi “Ariza va shablon to‘ldirgich” dasturiy vositasi tavsiflanadi. Dastur Python 3.12 va PySide6 asosida yaratilgan, internetsiz ishlaydi. Unda shaxsiy ma’lumotlar profillari, profillarni parol bilan shifrlash (Fernet, kalit PBKDF2-SHA256 orqali), shablondagi qo‘sh jingalak qavsli o‘rinbosarlarni avtomatik aniqlash va profil maydonlariga moslash, Word bo‘laklarga ajratib yuborgan o‘rinbosarlarni ham formatni saqlab to‘ldirish, 11 ta tayyor o‘zbekcha shablon, Microsoft Word yoki LibreOffice orqali PDF yaratish hamda Excel va CSV jadvalidan ommaviy hujjat yaratish amalga oshirilgan. Ishonchlilik 21 ta avtomatik test bilan tekshirilgan.",
+   "ru": "В статье описывается программное средство «Заполнение заявлений и шаблонов», автоматизирующее подготовку заявлений, объяснительных, доверенностей, резюме и объективок на основе шаблонов Word (.docx). Программа разработана на Python 3.12 и PySide6 и работает без интернета. Реализованы профили персональных данных, шифрование профилей паролем (Fernet, ключ через PBKDF2-SHA256), автоматическое обнаружение полей в двойных фигурных скобках и их сопоставление с данными профиля, заполнение с сохранением оформления даже при разбиении поля Word на несколько фрагментов, 11 готовых шаблонов на узбекском языке, создание PDF через Microsoft Word или LibreOffice и пакетная генерация документов из таблиц Excel и CSV. Надёжность проверена 21 автоматическим тестом.",
+   "en": "The paper describes the Template Filler, a software tool that automates the preparation of applications, explanatory notes, powers of attorney, CVs and personal record sheets from Word (.docx) templates. The program is written in Python 3.12 with PySide6 and works offline. It provides personal data profiles, optional password encryption of profiles (Fernet with a PBKDF2-SHA256 derived key), automatic detection of double-brace placeholders and their mapping to profile fields, format-preserving filling even when Word splits a placeholder into several runs, 11 ready-made Uzbek templates, PDF creation through Microsoft Word or LibreOffice, and batch generation of documents from Excel and CSV tables. Reliability is verified by 21 automated tests."
+  },
+  "kalit": {
+   "uz": [
+    "hujjat shabloni",
+    "Word avtomatlashtirish",
+    "Office Open XML",
+    "shaxsiy ma’lumotlar himoyasi",
+    "Fernet shifrlash",
+    "ommaviy hujjat yaratish",
+    "oflayn dastur"
+   ],
+   "ru": [
+    "шаблон документа",
+    "автоматизация Word",
+    "Office Open XML",
+    "защита персональных данных",
+    "шифрование Fernet",
+    "пакетное создание документов",
+    "офлайн-приложение"
+   ],
+   "en": [
+    "document template",
+    "Word automation",
+    "Office Open XML",
+    "personal data protection",
+    "Fernet encryption",
+    "batch document generation",
+    "offline application"
+   ]
+  },
+  "bolimlar": [
+   {
+    "sarlavha": "Kirish",
+    "matn": [
+     "Davlat va nodavlat tashkilotlarida, oliy ta’lim muassasalarida va kundalik hayotda fuqarolar muntazam ravishda bir xil turdagi hujjatlarni tayyorlaydi: ishga qabul qilish, mehnat ta’tili berish yoki ishdan bo‘shash to‘g‘risidagi arizalar, ish joyidan ma’lumotnoma so‘rash, tushuntirish xati, bildirishnoma, ishonchnoma, rezyume, ma’lumotnoma (obyektivka). Bu hujjatlarning shakli deyarli o‘zgarmaydi, o‘zgaradigan qismi esa shaxsiy ma’lumotlar (familiya, ism, otasining ismi, manzil, pasport ma’lumotlari, JSHSHIR, ish joyi, lavozim), rahbarning lavozimi va F.I.Sh.si hamda sana kabi bir necha elementdan iborat.",
+     "Amaliyotda bunday hujjatlar ko‘pincha avval tayyorlangan faylni nusxalab, undagi ma’lumotlarni qo‘lda almashtirish orqali tayyorlanadi. Bu yondashuvning kamchiliklari ma’lum: oldingi shaxsning ma’lumotlari hujjatda qolib ketishi, sana yangilanmay qolishi, bir hujjatda F.I.Sh.ning turli shakllari aralashib ketishi, formatlashning buzilishi. Oliy ta’lim muassasasi kafedrasida yoki kadrlar bo‘limida esa butun guruh talabalari yoki xodimlar uchun bir xil hujjatni o‘nlab nusxada tayyorlash zarurati tug‘iladi, bu ish qo‘lda bajarilganda ko‘p vaqt oladi va xato ehtimoli ortadi.",
+     "Hujjat aylanishini raqamlashtirish, jumladan “Raqamli O‘zbekiston – 2030” strategiyasida belgilangan davlat boshqaruvi va ta’lim tizimini raqamlashtirish vazifalari, takrorlanuvchi hujjatlarni avtomatik tayyorlash vositalariga ehtiyojni kuchaytiradi. Shu bilan birga, bunday hujjatlar shaxsiy ma’lumotlarni o‘z ichiga oladi, shuning uchun ularni tayyorlovchi vosita ma’lumotlarni tashqi serverga yubormasligi va kompyuterda himoyalangan holda saqlay olishi muhim.",
+     "Ushbu maqolada shu talablarga javob beruvchi “Ariza va shablon to‘ldirgich” dasturining vazifasi, arxitekturasi, Word hujjatini formatni buzmasdan to‘ldirish algoritmi, shaxsiy ma’lumotlarni himoyalash usuli va sinov natijalari bayon etiladi.",
+     "Dastur uchun shablon formati sifatida Word (.docx) tanlangani bejiz emas. Bu format ochiq standart (ECMA-376, Office Open XML) asosida qurilgan, tashkilotlarda eng keng tarqalgan va foydalanuvchiga tanish muharrirda shablonni mustaqil tayyorlash imkonini beradi. Shablon tayyorlash uchun maxsus dastur yoki dasturlash bilimi talab qilinmaydi: foydalanuvchi oddiy hujjat yozadi va o‘zgaradigan joylarga nom qo‘yadi. Natija ham .docx ko‘rinishida chiqqani uchun uni zarur bo‘lsa qo‘lda tahrirlash mumkin."
+    ]
+   },
+   {
+    "sarlavha": "Muammoning qo‘yilishi va mavjud yechimlar tahlili",
+    "matn": [
+     "Tadqiqot maqsadi – Word (.docx) shablonlarini foydalanuvchi bir marta kiritgan shaxsiy ma’lumotlar bilan formatlashni saqlagan holda avtomatik to‘ldiruvchi, ko‘p hujjatni jadval asosida ommaviy yaratuvchi va ma’lumotlarni faqat foydalanuvchi kompyuterida saqlovchi ish stoli ilovasini ishlab chiqish. Maqsadga erishish uchun quyidagi vazifalar qo‘yildi:",
+     "- bir nechta shaxs (foydalanuvchining o‘zi, oila a’zolari) uchun shaxsiy ma’lumotlar profillarini yuritish;",
+     "- profillarni ixtiyoriy parol bilan shifrlash va maxfiy maydonlarni (pasport, JSHSHIR) ekranda yashirish;",
+     "- shablondagi o‘rinbosarlarni avtomatik topish va ularni nomi bo‘yicha profil maydonlariga moslash, jumladan muqobil nomlar va kirill yozuvidagi nomlarni tanish;",
+     "- Word bitta o‘rinbosarni bir nechta matn bo‘lagiga (run) bo‘lib yuborgan holatda ham uni topish va o‘rniga qiymatni shu joydagi formatlash bilan qo‘yish;",
+     "- asosiy matndan tashqari jadvallar, kolontitullar, izohlar va matn bloklarini ham to‘ldirish;",
+     "- Excel yoki CSV jadvalining har bir qatori uchun alohida hujjat yaratish;",
+     "- kerak bo‘lsa natijani PDF formatiga o‘tkazish.",
+     "Mavjud yechimlarni umumiy turlarga ajratish mumkin. Birinchisi – matn muharrirlarining ommaviy pochta (mail merge) vositasi. U jadvaldan ko‘p hujjat yaratishga imkon beradi, biroq ma’lumot manbasi va maydonlarni har safar qo‘lda bog‘lashni talab qiladi, shaxsiy profil tushunchasi va shaxsiy ma’lumotlarni himoyalash vositalarini taklif etmaydi. Ikkinchisi – hujjat yaratishning onlayn xizmatlari va konstruktorlari. Ular qulay shakllar beradi, ammo internet aloqasini talab qiladi va shaxsiy ma’lumotlar tashqi serverda qayta ishlanadi. Uchinchisi – hujjat aylanishi tizimlarining ichki shablon modullari: ular tashkilot miqyosida ishlaydi, o‘rnatish va administratsiyani talab qiladi va alohida foydalanuvchi uchun ortiqcha murakkab.",
+     "Texnik nuqtai nazardan asosiy qiyinchilik Office Open XML formatining tuzilishi bilan bog‘liq. Word foydalanuvchi bitta so‘z sifatida ko‘rgan matnni imlo tekshiruvi, tahrirlash tarixi yoki formatlash o‘zgarishi sababli bir nechta “run” elementiga bo‘lib yuborishi mumkin. Natijada “{{FISH}}” o‘rinbosari XML ichida, masalan, “{{FI” va “SH}}” bo‘laklari ko‘rinishida saqlanadi va oddiy qidirish-almashtirish uni topa olmaydi. Shu sababli yechim paragraf darajasida ishlovchi algoritmni talab qiladi.",
+     "Bundan kelib chiqib, ishlab chiqiladigan vosita uchun quyidagi talablar shakllantirildi: o‘rnatishsiz bitta fayl ko‘rinishida tarqatilishi; internetsiz ishlashi; o‘zbek, rus va ingliz tilidagi interfeys; o‘zbek ish yuritish amaliyotiga mos tayyor shablonlar; shablon faylining hech qachon o‘zgartirilmasligi; mavjud faylning ustiga yozilmasligi."
+    ]
+   },
+   {
+    "sarlavha": "Tadqiqot metodologiyasi va dasturiy arxitektura",
+    "matn": [
+     "Dastur Python 3.12 tilida, grafik interfeys Qt 6 asosidagi PySide6 kutubxonasida yaratilgan. Word hujjatlarini o‘qish va yozish uchun python-docx (lxml bilan), Excel jadvallarini o‘qish uchun openpyxl, shifrlash uchun cryptography kutubxonasi, Microsoft Word orqali PDF yaratish uchun pywin32 ishlatiladi. Dastur PyInstaller yordamida bitta .exe faylga yig‘iladi. Uchinchi tomon komponentlari va ularning litsenziyalari loyihaning THIRD PARTY NOTICES hujjatida keltirilgan.",
+     "Kod vazifasiga ko‘ra quyidagi modullarga ajratilgan:",
+     "- **fields** – profil maydonlari ro‘yxati, ularning uch tildagi yorliqlari, muqobil nomlari, hisoblanadigan qiymatlar va o‘rinbosar nomini maydonga moslash;",
+     "- **docx fill** moduli – .docx fayldagi o‘rinbosarlarni topish, to‘ldirish, ko‘rinish uchun matn tayyorlash va fayl nomini shakllantirish;",
+     "- **store** – profillar omborini saqlash va ixtiyoriy shifrlash;",
+     "- **library** – tayyor va foydalanuvchi qo‘shgan shablonlar kutubxonasi;",
+     "- **batch** – Excel va CSV jadvallarini o‘qish, ustunlarni moslashtirish va ommaviy yaratish;",
+     "- **convert** – Microsoft Word yoki LibreOffice orqali PDF yaratish;",
+     "- **window** va **strings** – interfeys va uning uch tildagi matnlari;",
+     "- **uzkit** – menyu, mavzu, til, sozlamalar va fayl yo‘llari uchun umumiy karkas.",
+     "Profil modeli. Profil 23 ta maydondan iborat bo‘lib, ular beshta guruhga ajratilgan: “Shaxsiy ma’lumotlar” (familiya, ism, otasining ismi, tug‘ilgan sana va joy, millati), “Aloqa” (manzil, telefon, elektron pochta), “Hujjatlar” (pasport seriyasi va raqami, pasport kim tomonidan va qachon berilgani, JSHSHIR), “Ish va o‘qish” (tashkilot, bo‘lim yoki kafedra, lavozim, guruh, ma’lumoti, tamomlagan OTM, mutaxassisligi, ilmiy darajasi, chet tillari) va “Ariza kimga yoziladi (rahbar)” (rahbar lavozimi va F.I.Sh.). Pasport va JSHSHIR maxfiy maydon sifatida belgilangan: ular ekranda “AB*****67” ko‘rinishida niqoblanadi. Pasport raqami ikki harf va yetti raqam, JSHSHIR esa o‘n to‘rt raqamdan iboratligi tekshirilib, mos kelmasa ogohlantirish chiqariladi.",
+     "Hisoblanadigan qiymatlar. Profil maydonlaridan tashqari beshta qiymat avtomatik hisoblanadi: to‘liq F.I.Sh. (familiya, ism, otasining ismi), qisqa F.I.Sh. o‘zbek rasmiy uslubida (“B.M. Hakimov”), bugungi sana raqamli shaklda (kk.oo.yyyy), bugungi sana so‘z bilan (“2026-yil 27-noyabr”) va joriy yil.",
+     "O‘rinbosarlarni moslash. Shablondagi o‘rinbosar qo‘sh jingalak qavs ichidagi nom bilan belgilanadi, masalan, {{FISH}}, {{SANA}}, {{MANZIL}}, {{TELEFON}}, {{PASPORT}}, {{JSHSHIR}}, {{TASHKILOT}}, {{LAVOZIM}}. Nom normallashtiriladi: katta harfga o‘tkaziladi, apostroflar va harf yoki raqam bo‘lmagan belgilar olib tashlanadi. Har bir maydon uchun muqobil nomlar ro‘yxati mavjud (masalan, tashkilot uchun “ISHJOYI”, “MUASSASA”, “WORKPLACE”, “МЕСТОРАБОТЫ”), kirill yozuvidagi nomlar esa lotinga transliteratsiya qilinib solishtiriladi. Mos maydon topilmagan o‘rinbosar “Qo‘lda kiritiladi” deb belgilanadi va qiymati foydalanuvchidan so‘raladi; kiritilgan qiymat keyingi safar uchun eslab qolinadi.",
+     "To‘ldirish algoritmi. Har bir paragrafdagi barcha matn elementlari birlashtirilib, umumiy satr bo‘yicha o‘rinbosarlar qidiriladi. Topilgan o‘rinbosarning boshlanish va tugash nuqtalari dastlabki elementlarga qaytarib hisoblanadi, qiymat o‘rinbosar boshlangan elementga yoziladi va shu tariqa u yerdagi shrift, qalinlik va boshqa formatlashni oladi; qolgan bo‘laklardan o‘rinbosar qoldiqlari olib tashlanadi. Ko‘p qatorli qiymatlar qator uzilishi elementlari bilan qo‘yiladi. Qayta ishlash hujjatning asosiy qismi, ichma-ich jadvallar, sarlavha va pastki kolontitullar, izohlar hamda matn bloklarini qamrab oladi. Qiymatlardan XML uchun yaroqsiz boshqaruv belgilari tozalanadi.",
+     "Xavfsizlik choralari. Profillar %APPDATA%\\BahtiyorSoft\\shablon-toldirgich papkasidagi profiles.json faylida saqlanadi. Parol qo‘yilgan bo‘lsa, ma’lumotlar Fernet (AES asosidagi autentifikatsiyalangan shifrlash) bilan shifrlanadi, kalit esa paroldan tasodifiy “tuz” va 390 000 iteratsiyali PBKDF2-HMAC-SHA256 funksiyasi orqali olinadi. Noto‘g‘ri parol shifrni ochishda autentifikatsiya xatosiga olib keladi va ma’lumotlar ko‘rsatilmaydi. Parol unutilsa, ma’lumotlarni tiklash imkoni yo‘q, bu haqda foydalanuvchi oldindan ogohlantiriladi. Shablon fayli hech qachon o‘zgartirilmaydi: natija vaqtinchalik faylga yozilib, so‘ng yakuniy nomga o‘tkaziladi, kirish va chiqish fayli bir xil bo‘lsa amal rad etiladi, mavjud fayl bo‘lsa nomiga “(2)”, “(3)” qo‘shiladi. Dastur internetga murojaat qilmaydi.",
+     "Interfeys darajasida ham himoya choralari ko‘rilgan. Maxfiy maydonlarning to‘liq qiymati faqat “Maxfiy ma’lumotni ko‘rsatish” bayrog‘i yoqilganda ko‘rinadi va tahrirlanadi, aks holda jadvalda niqoblangan ko‘rinish chiqadi. Qo‘lda kiritilgan qiymatlarni eslab qolish faqat qulaylik uchun mo‘ljallangan va sozlamalar faylida saqlanadi. Kutilmagan xatolik yuz berganda tafsilotlar jurnal fayliga yoziladi, foydalanuvchiga esa tushunarli xabar ko‘rsatiladi.",
+     "Ma’lumot oqimi quyidagicha: foydalanuvchi shablon va profilni tanlaydi; shablondan o‘rinbosarlar ro‘yxati olinadi; har biri maydonga moslanadi; profil va hisoblanadigan qiymatlardan jadval to‘ldiriladi; foydalanuvchi bo‘sh qatorlarni to‘ldiradi va ko‘rinishni tekshiradi; hujjat yangi faylga yoziladi va kerak bo‘lsa PDF ga o‘tkaziladi.",
+     "Shablonlar kutubxonasi ikki manbadan shakllanadi. Tayyor shablonlar dastur ichidagi resurs papkasida, ularning nomlari uch tilda va toifalari esa alohida indeks faylida saqlanadi. Foydalanuvchi qo‘shgan shablonlar profil papkasidagi templates katalogiga nusxalanadi va o‘z indeksiga ega bo‘ladi. Tayyor shablonni to‘g‘ridan to‘g‘ri o‘zgartirib bo‘lmaydi, ammo undan nusxa olib, nusxani tahrirlash mumkin. Bu yechim dastur yangilanganda tayyor shablonlarni almashtirish va foydalanuvchi o‘zgarishlarini saqlab qolish imkonini beradi.",
+     "Ommaviy rejimda har bir o‘rinbosar qiymati quyidagi ustuvorlik bo‘yicha aniqlanadi: avval moslashtirilgan ustundagi qiymat, u bo‘sh bo‘lsa – qatordagi familiya, ism va otasining ismi ustunlaridan hisoblangan qiymat (to‘liq yoki qisqa F.I.Sh., sana, yil), u ham bo‘lmasa – “Doimiy qiymat” ustunidagi qiymat. Har bir hujjatning fayl nomi namunadan qator qiymatlari bilan hosil qilinadi, takroriy nomlar raqam qo‘shish orqali ajratiladi. Jadvalning bo‘sh qatorlari e’tiborga olinmaydi."
+    ]
+   },
+   {
+    "sarlavha": "Amalga oshirish va asosiy funksiyalar",
+    "matn": [
+     "Dastur oynasi to‘rt bo‘limdan iborat: “Hujjat tayyorlash”, “Profillar”, “Shablonlar” va “Excel’dan ommaviy”.",
+     "“Hujjat tayyorlash” bo‘limida (1-rasm) chapda toifalarga ajratilgan shablonlar ro‘yxati va qidirish maydoni, pastda “Boshqa .docx faylni ochish...” tugmasi joylashgan. O‘ng qismda tanlangan shablon nomi, “Kim uchun:” profil tanlovi va ikki varaq bor: “Maydonlar” varag‘idagi jadvalda “O‘rinbosar”, “Ma’lumot” va “Qiymat” ustunlari ko‘rsatiladi, “Ko‘rinish” varag‘ida esa to‘ldirilgan hujjat matni oldindan ko‘riladi. Jadval ostida maydonlar soni va bo‘sh qolganlari soni chiqadi. Pastki panelda saqlash papkasi, fayl nomi namunasi, “PDF ham yaratish” bayrog‘i va “Hujjatni yaratish” tugmasi joylashgan. Fayl nomi namunasida bitta jingalak qavsdagi nomlar, masalan {FISH} yoki {SANA}, qiymat bilan almashtiriladi, Windows fayl nomlarida taqiqlangan belgilar olib tashlanadi. Bo‘sh maydon qolganda hujjat yaratishdan oldin tasdiq so‘raladi.",
+     "“Profillar” bo‘limida (2-rasm) chapda “Shaxslar” ro‘yxati, “Qo‘shish”, “Nusxa”, “O‘chirish” tugmalari, saqlash holati haqidagi yozuv va “Parol bilan himoya” tugmasi bor. O‘ng qismda profil nomi va beshta guruhdagi maydonlar joylashgan. Parol qo‘yish, o‘zgartirish va olib tashlash shu bo‘limdan bajariladi; shifrlangan profillar keyingi ishga tushirishda parol kiritilgunga qadar qulflangan bo‘ladi.",
+     "“Shablonlar” bo‘limida (3-rasm) kutubxonadagi barcha shablonlar nomi, turi (“Arizalar”, “Xatlar”, “Shaxsiy hujjatlar”, “Boshqa”), manbasi (“Tayyor” yoki foydalanuvchiniki) va maydonlar soni bilan ko‘rsatiladi. Dastur bilan 11 ta tayyor shablon keladi: ishga qabul qilish, mehnat ta’tili berish va ishdan bo‘shash to‘g‘risidagi arizalar, ish joyidan ma’lumotnoma so‘rash, umumiy shakldagi ariza, talaba arizasi, tushuntirish xati, bildirishnoma, ishonchnoma, rezyume va ma’lumotnoma (obyektivka). “Qo‘shish...”, “Word’da ochish”, “Nusxa olish”, “Nomini o‘zgartirish”, “Olib tashlash” va “To‘ldirish” tugmalari mavjud. Foydalanuvchi qo‘shgan fayl kutubxonaga nusxalanadi, asl fayl joyida qoladi. O‘ng paneldagi “O‘z shabloningizni yaratish” qismida o‘rinbosar nomlari va ularga nima qo‘yilishi jadvali beriladi, nomni ikki marta bosib nusxalash mumkin.",
+     "“Excel’dan ommaviy” bo‘limida (4-rasm) shablon, jadval fayli (Excel .xlsx yoki CSV) va Excel varag‘i tanlanadi. Jadvalning birinchi qatori ustun nomlari sifatida o‘qiladi. CSV fayllar avval UTF-8, so‘ng Windows-1251 kodlashida o‘qiladi, ajratgich (vergul, nuqtali vergul yoki tabulyatsiya) avtomatik aniqlanadi. “Moslashtirish” jadvalida har bir o‘rinbosar uchun ustun avtomatik tanlanadi: avval aynan bir xil nom, keyin normallashtirilgan nom, so‘ng maydon kaliti bo‘yicha. Familiya, ism va otasining ismi ustunlari mavjud bo‘lsa, to‘liq va qisqa F.I.Sh. har bir qator uchun avtomatik hisoblanadi. Barcha qatorlar uchun bir xil qiymat “Doimiy qiymat” ustuniga yoziladi. “Hujjatlarni yaratish” tugmasi har bir qator uchun alohida .docx (va xohishga ko‘ra PDF) yaratadi.",
+     "PDF yaratish. Agar kompyuterda Microsoft Word o‘rnatilgan bo‘lsa, u ko‘rinmas rejimda ishga tushirilib, barcha hujjatlar bitta Word nusxasi orqali PDF ga o‘tkaziladi. Word bo‘lmasa, LibreOffice dasturi ishlatiladi. Ikkalasi ham bo‘lmasa, .docx fayl yaratiladi va foydalanuvchiga tegishli xabar beriladi.",
+     "Odatiy ish ssenariysi quyidagicha. Foydalanuvchi bir marta o‘z profilini to‘ldiradi. Ta’tilga chiqish arizasi kerak bo‘lganda, u “Hujjat tayyorlash” bo‘limida tegishli shablonni tanlaydi; tashkilot, bo‘lim, lavozim, rahbar lavozimi va F.I.Sh.si, manzil va telefon profildan qo‘yiladi, sana avtomatik hisoblanadi. Foydalanuvchi faqat ish yili va ta’til boshlanish sanasi kabi profilda bo‘lmagan qiymatlarni kiritadi, “Ko‘rinish” varag‘ida matnni tekshiradi va hujjatni yaratadi. Qo‘lda kiritilgan qiymatlar keyingi safar uchun eslab qolinadi, shuning uchun takroriy hujjatda ularni qayta yozish shart emas."
+    ],
+    "rasmlar": [
+     {
+      "fayl": "docs/screenshots/1.png",
+      "izoh": "“Hujjat tayyorlash” bo‘limi: chapda shablonlar ro‘yxati, o‘ngda “Mehnat ta’tili berish to‘g‘risida ariza” shablonining o‘rinbosarlari, ularga mos profil maydonlari va qiymatlari, pastda papka, fayl nomi va “Hujjatni yaratish” tugmasi"
+     },
+     {
+      "fayl": "docs/screenshots/2.png",
+      "izoh": "“Profillar” bo‘limi: “Shaxslar” ro‘yxati, “Shaxsiy ma’lumotlar”, “Aloqa” va “Hujjatlar” guruhlari; pasport raqami yashirin ko‘rinishda"
+     },
+     {
+      "fayl": "docs/screenshots/3.png",
+      "izoh": "“Shablonlar” bo‘limi (qorong‘i mavzu): 11 ta tayyor shablon turi va maydonlar soni bilan, o‘ngda “O‘z shabloningizni yaratish” bo‘yicha o‘rinbosarlar jadvali"
+     },
+     {
+      "fayl": "docs/screenshots/4.png",
+      "izoh": "“Excel’dan ommaviy” bo‘limi: “Talaba arizasi” shabloni, to‘rt qatorli jadval va o‘rinbosarlarni ustunlarga moslashtirish jadvali"
+     }
+    ]
+   },
+   {
+    "sarlavha": "Sinov va natijalar",
+    "matn": [
+     "Dasturning to‘g‘riligi pytest asosidagi 21 ta avtomatik test funksiyasi bilan tekshiriladi (ularning ayrimlari bir nechta kirish qiymati bilan parametrlangan).",
+     "- **Mantiq testlari (13 ta).** Bo‘laklarga ajratilgan o‘rinbosarlarni topish; asosiy matn, jadval va kolontitullarni formatni saqlab to‘ldirish; topilmagan o‘rinbosarlarni saqlab qolish rejimi; kirish va chiqish fayli bir xil bo‘lishidan himoya; o‘rinbosar nomlarini maydonlarga moslash; hisoblanadigan qiymatlar; niqoblash va tekshiruv qoidalari; ochiq va shifrlangan profil omborini saqlash-yuklash; barcha tayyor shablonlarni o‘qish va to‘ldirish; Excel va CSV jadvalidan ommaviy yaratish; fayl nomi namunasini qayta ishlash; shablonlar kutubxonasi amallari.",
+     "- **Chuqur testlar (5 ta).** XML uchun yaroqsiz belgilar bo‘lgan qiymatlarning hujjatni buzmasligi; bitta ustunli va Windows-1251 kodlashidagi CSV fayl; qator uzilishlari va takroriy nomlar bo‘lgan Excel jadvalidan ommaviy yaratish; shablon faylining o‘zgarmay qolishi; buzilgan .docx fayl haqida xato xabari.",
+     "- **Tutun testlari (3 ta).** Asosiy oynaning yaratilishi, uch tildagi tarjimalarning to‘liqligi va hujjat tayyorlash sahifasidagi asosiy ish oqimi.",
+     "Funksional ko‘rsatkichlar: 23 ta profil maydoni va 5 ta hisoblanadigan qiymat; 11 ta tayyor shablon; kirish formatlari – .docx shablonlar, Excel (.xlsx) va CSV jadvallar; chiqish formatlari – .docx va PDF; interfeys tillari – o‘zbek, rus va ingliz. Dastur Windows 10 (1809 va undan keyingi) va Windows 11 x64 tizimlarida o‘rnatishsiz ishlaydi.",
+     "Ish tezligi, foydalanuvchilar soni yoki foydalanuvchilar fikri bo‘yicha o‘lchovlar o‘tkazilmagan, shuning uchun bunday ko‘rsatkichlar keltirilmaydi. Sinov natijalari funksional to‘g‘rilik va xatolarga chidamlilik bilan cheklanadi.",
+     "Testlarda haqiqiy .docx va .xlsx fayllar vaqtinchalik papkada yaratiladi, dastur ularni to‘ldirgandan so‘ng natija python-docx yordamida qayta o‘qilib, kutilgan matn va formatlash bilan solishtiriladi. Shu tariqa algoritm faqat ichki ma’lumot tuzilmalari darajasida emas, balki yakuniy fayl darajasida tekshiriladi. Interfeys testlari Qt oynasini ekranga chiqarmasdan yaratadi."
+    ]
+   },
+   {
+    "sarlavha": "Muhokama",
+    "matn": [
+     "Dasturning asosiy afzalliklari quyidagilardan iborat. Birinchidan, shaxsiy ma’lumotlar bir marta kiritiladi va barcha shablonlarda qayta ishlatiladi, bu esa bir hujjatda ma’lumotlarning nomuvofiqligi xavfini kamaytiradi. Ikkinchidan, to‘ldirish paragraf darajasida bajarilgani uchun Word o‘rinbosarni qanday bo‘laklarga bo‘lganidan qat’i nazar natija bir xil bo‘ladi va formatlash saqlanadi. Uchinchidan, o‘rinbosar nomlarini moslashda muqobil nomlar va transliteratsiyadan foydalanish uchinchi shaxslar tayyorlagan shablonlar bilan ham ishlash imkonini beradi. To‘rtinchidan, shaxsiy ma’lumotlar kompyuterdan tashqariga chiqmaydi va parol bilan shifrlanishi mumkin. Beshinchidan, ommaviy rejim kafedra va kadrlar bo‘limi uchun bir xil hujjatlarni o‘nlab nusxada tayyorlashni bitta amalga aylantiradi.",
+     "Cheklovlar ham mavjud. Dastur faqat .docx formatidagi shablonlar bilan ishlaydi, eski .doc formatini qo‘llab-quvvatlamaydi. Qiymat o‘rinbosar boshlangan joydagi formatni oladi, ya’ni o‘rinbosar ichida formatlash o‘zgargan bo‘lsa, qiymatning faqat bitta formati saqlanadi. PDF yaratish uchun kompyuterda Microsoft Word yoki LibreOffice o‘rnatilgan bo‘lishi kerak. Shartli bloklar (masalan, qiymat bo‘sh bo‘lsa paragrafni olib tashlash) va jadval qatorlarini takrorlash kabi murakkab shablon mantiqiy konstruksiyalari amalga oshirilmagan. Shifrlash faqat profillar omboriga tatbiq etiladi; yaratilgan hujjatlar oddiy fayl sifatida saqlanadi va ularni himoyalash foydalanuvchi zimmasida.",
+     "Rivojlantirish istiqbollari sifatida shartli bloklar va takrorlanuvchi jadval qatorlarini qo‘llab-quvvatlash, tayyor shablonlar to‘plamini kengaytirish (masalan, ta’lim muassasalari uchun qo‘shimcha ariza shakllari), yaratilgan hujjatlarni ixtiyoriy shifrlash va profil ma’lumotlarini jadvaldan import qilish imkoniyatlarini ko‘rsatish mumkin.",
+     "O‘quv jarayoni nuqtai nazaridan dastur ish yuritish va ofis texnologiyalari fanlarida ko‘rgazmali vosita bo‘la oladi. U shablon, o‘rinbosar va ma’lumot manbasi tushunchalarini amalda ko‘rsatadi, ommaviy pochta texnologiyasining mohiyatini tushuntiradi, shuningdek shaxsiy ma’lumotlarni himoyalash, parol va shifrlash masalalarini real misolda muhokama qilish imkonini beradi."
+    ]
+   },
+   {
+    "sarlavha": "Xulosa",
+    "matn": [
+     "Ishda Word shablonlarini shaxsiy ma’lumotlar profillari asosida avtomatik to‘ldiruvchi oflayn dasturiy vosita taqdim etildi. Paragraf darajasida ishlovchi to‘ldirish algoritmi bo‘laklarga ajratilgan o‘rinbosarlarni ham topib, formatni saqlab qo‘yish imkonini beradi va asosiy matn, jadvallar, kolontitullar, izohlar hamda matn bloklarini qamrab oladi. O‘rinbosar nomlarini normallashtirish, muqobil nomlar va transliteratsiya orqali moslash shablon tayyorlash talablarini yengillashtiradi. Profillarni Fernet va PBKDF2-HMAC-SHA256 asosida shifrlash shaxsiy ma’lumotlarni himoyalaydi. Excel va CSV jadvallaridan ommaviy yaratish hamda Word yoki LibreOffice orqali PDF tayyorlash funksiyalari vositani tashkilotlarda qo‘llash imkoniyatini kengaytiradi.",
+     "Dastur 11 ta tayyor o‘zbekcha shablon bilan tarqatiladi, uning funksional to‘g‘riligi 21 ta avtomatik test bilan tasdiqlangan. Vosita fuqarolar, talabalar, o‘qituvchilar, kadrlar bo‘limi va devonxona xodimlari uchun takrorlanuvchi hujjatlarni tayyorlash vaqtini qisqartirishga va hujjatlardagi ma’lumotlarning bir xilligini ta’minlashga xizmat qiladi.",
+     "Taqdim etilgan yondashuv – ma’lumotni hujjat shaklidan ajratish, uni bir marta tuzilgan ko‘rinishda saqlash va shablonlar orqali ko‘p marta qayta ishlatish – ish yuritishning boshqa sohalarida ham qo‘llanishi mumkin. Dasturning modulli tuzilishi yangi tayyor shablonlar, yangi profil maydonlari va qo‘shimcha chiqish formatlarini mavjud kodga katta o‘zgartirish kiritmasdan qo‘shish imkonini beradi."
+    ]
+   }
+  ],
+  "adabiyotlar": [
+   "Python Software Foundation. Python 3.12 Documentation [Elektron resurs]. – URL: https://docs.python.org/3.12/ (murojaat sanasi: 27.11.2026).",
+   "The Qt Company. Qt for Python (PySide6) Documentation [Elektron resurs]. – URL: https://doc.qt.io/qtforpython-6/ (murojaat sanasi: 27.11.2026).",
+   "python-docx Documentation [Elektron resurs]. – URL: https://python-docx.readthedocs.io/en/latest/ (murojaat sanasi: 27.11.2026).",
+   "openpyxl Documentation [Elektron resurs]. – URL: https://openpyxl.readthedocs.io/en/stable/ (murojaat sanasi: 27.11.2026).",
+   "Python Cryptographic Authority. cryptography Documentation [Elektron resurs]. – URL: https://cryptography.io/en/latest/ (murojaat sanasi: 27.11.2026).",
+   "PyInstaller Development Team. PyInstaller Manual [Elektron resurs]. – URL: https://pyinstaller.org/en/stable/ (murojaat sanasi: 27.11.2026).",
+   "ECMA-376. Office Open XML File Formats [Elektron resurs]. – Geneva : Ecma International. – URL: https://ecma-international.org/publications-and-standards/standards/ecma-376/ (murojaat sanasi: 27.11.2026).",
+   "Moriarty K., Kaliski B., Rusch A. RFC 8018. PKCS #5: Password-Based Cryptography Specification Version 2.1 [Elektron resurs]. – IETF, 2017. – URL: https://www.rfc-editor.org/rfc/rfc8018 (murojaat sanasi: 27.11.2026).",
+   "O‘zbekiston Respublikasi Prezidentining 2020-yil 5-oktabrdagi PF-6079-son “Raqamli O‘zbekiston – 2030” strategiyasini tasdiqlash va uni samarali amalga oshirish chora-tadbirlari to‘g‘risida”gi Farmoni.",
+   "Hakimov B. shablon-toldirgich: dastur manba kodi va relizlari [Elektron resurs]. – URL: https://github.com/eduhakimov/shablon-toldirgich (murojaat sanasi: 27.11.2026)."
+  ]
+ },
+ "qollanma": {
+  "sarlavha": "Foydalanish qo‘llanmasi",
+  "bolimlar": [
+   {
+    "sarlavha": "Umumiy ma’lumot",
+    "matn": [
+     "“Ariza va shablon to‘ldirgich” – Word (.docx) shablonlarini siz saqlab qo‘ygan shaxsiy ma’lumotlar bilan avtomatik to‘ldiruvchi dastur. Siz bir marta o‘zingiz va oila a’zolaringiz haqidagi ma’lumotlarni (F.I.Sh., tug‘ilgan sana, manzil, telefon, pasport, JSHSHIR, ish joyi, lavozim va boshqalar) kiritasiz, keyin istalgan ariza yoki xatni bir necha bosishda tayyorlaysiz.",
+     "Dastur bilan 11 ta tayyor shablon keladi: “Ishga qabul qilish to‘g‘risida ariza”, “Mehnat ta’tili berish to‘g‘risida ariza”, “Ishdan bo‘shash to‘g‘risida ariza”, “Ish joyidan ma’lumotnoma so‘rash”, “Ariza (umumiy shakl)”, “Talaba arizasi”, “Tushuntirish xati”, “Bildirishnoma”, “Ishonchnoma”, “Rezyume” va “Ma’lumotnoma (obyektivka)”. O‘zingiz yaratgan Word shablonlarini ham qo‘shishingiz mumkin.",
+     "Bundan tashqari, dastur Excel yoki CSV jadvalining har bir qatori uchun alohida hujjat yaratadi. Bu imkoniyat, masalan, guruhdagi barcha talabalar yoki bo‘limdagi barcha xodimlar uchun bir xil hujjat tayyorlashda qo‘l keladi.",
+     "Dastur fuqarolar, talabalar, o‘qituvchilar, kafedra mudirlari, dekanat, kadrlar bo‘limi va devonxona xodimlari uchun mo‘ljallangan.",
+     "Dasturning asosiy afzalligi – ma’lumotlar bir marta kiritiladi. Masalan, ish joyingiz, lavozimingiz va rahbaringiz ma’lumotlari profilda saqlangan bo‘lsa, ta’til arizasi, ma’lumotnoma so‘rash arizasi va tushuntirish xati uchun ularni qayta yozish kerak emas. Sana har safar avtomatik yangilanadi."
+    ]
+   },
+   {
+    "sarlavha": "Tizim talablari",
+    "matn": [
+     "- Operatsion tizim: Windows 10 (1809 yoki undan keyingi versiya) yoki Windows 11, 64 bitli (x64).",
+     "- Internet aloqasi talab qilinmaydi: dastur to‘liq oflayn ishlaydi va ma’lumotlarni hech qayerga yubormaydi.",
+     "- O‘rnatish shart emas: dastur bitta ShablonToldirgich.exe faylidan iborat.",
+     "- PDF yaratish uchun kompyuterda Microsoft Word yoki LibreOffice o‘rnatilgan bo‘lishi kerak. Ular bo‘lmasa, dastur faqat .docx fayl yaratadi.",
+     "- Shablonlarni tahrirlash va natijani ochish uchun .docx formatini ochadigan matn muharriri kerak."
+    ]
+   },
+   {
+    "sarlavha": "O‘rnatish va ishga tushirish",
+    "matn": [
+     "1. Dasturning GitHub sahifasidagi Releases bo‘limidan (https://github.com/eduhakimov/shablon-toldirgich/releases) ShablonToldirgich.exe faylini yuklab oling.",
+     "2. Faylni o‘zingizga qulay papkaga ko‘chiring.",
+     "3. Faylni ikki marta bosib ishga tushiring. Dastur o‘rnatilmaydi, oyna darhol ochiladi.",
+     "4. Birinchi ishga tushirishda Windows SmartScreen ogohlantirish oynasini ko‘rsatishi mumkin. Bunday holda “Batafsil” havolasini, so‘ng “Baribir ishga tushirish” tugmasini bosing.",
+     "Yangi versiyaga o‘tish uchun eski .exe faylni yangisi bilan almashtiring. Profillar va siz qo‘shgan shablonlar alohida papkada saqlangani uchun ular yo‘qolmaydi."
+    ]
+   },
+   {
+    "sarlavha": "Dastur oynasi bilan tanishish",
+    "matn": [
+     "Oyna yuqorisida menyu satri bor: “Fayl”, “Sozlamalar” (til va mavzu) va “Yordam” (“Qo‘llanma” va “Dastur haqida”). Uning ostida dastur nomi va to‘rtta bo‘lim yorlig‘i joylashgan: “Hujjat tayyorlash”, “Profillar”, “Shablonlar” va “Excel’dan ommaviy”. Oyna pastidagi holat satrida qisqa xabarlar chiqadi.",
+     "**Hujjat tayyorlash** (1-rasm). Chapda “Shablonlar” ro‘yxati toifalar bo‘yicha (“Arizalar”, “Xatlar”, “Shaxsiy hujjatlar”, “Boshqa”) va “Qidirish...” maydoni, pastda “Boshqa .docx faylni ochish...” tugmasi. O‘ngda “Kim uchun:” ro‘yxati, “Maydonlar” va “Ko‘rinish” varaqlari. “Maydonlar” jadvalida uchta ustun bor: “O‘rinbosar” (shablondagi nom), “Ma’lumot” (unga mos profil maydoni yoki “Qo‘lda kiritiladi”) va “Qiymat”. Pastki panelda “Papka”, “Fayl nomi”, “PDF ham yaratish” va “Hujjatni yaratish”.",
+     "**Profillar** (2-rasm). Chapda “Shaxslar” ro‘yxati va “Qo‘shish”, “Nusxa”, “O‘chirish”, “Parol bilan himoya” tugmalari. O‘ngda “Profil nomi” va maydonlar guruhlari: “Shaxsiy ma’lumotlar”, “Aloqa”, “Hujjatlar”, “Ish va o‘qish”, “Ariza kimga yoziladi (rahbar)”. Pastda “Saqlash” tugmasi.",
+     "**Shablonlar** (3-rasm). Jadvalda “Nomi”, “Turi”, “Manba” va “Maydonlar” ustunlari; pastda “Qo‘shish...”, “Word’da ochish”, “Nusxa olish”, “Nomini o‘zgartirish”, “Olib tashlash” va “To‘ldirish” tugmalari. O‘ngda “O‘z shabloningizni yaratish” yo‘riqnomasi va o‘rinbosarlar jadvali.",
+     "**Excel’dan ommaviy** (4-rasm). Yuqorida “Shablon”, “Jadval” va “Varaq” tanlovlari; o‘rtada “Ma’lumotlar” (jadval mazmuni) va “Moslashtirish” (“O‘rinbosar”, “Ustun”, “Doimiy qiymat”) jadvallari; pastda “Fayl nomi”, “Papka”, “PDF ham yaratish” va “Hujjatlarni yaratish”."
+    ],
+    "rasmlar": [
+     {
+      "fayl": "docs/screenshots/1.png",
+      "izoh": "“Hujjat tayyorlash” bo‘limi: chapda shablonlar ro‘yxati, o‘ngda “Mehnat ta’tili berish to‘g‘risida ariza” shablonining o‘rinbosarlari, ularga mos profil maydonlari va qiymatlari, pastda papka, fayl nomi va “Hujjatni yaratish” tugmasi"
+     },
+     {
+      "fayl": "docs/screenshots/2.png",
+      "izoh": "“Profillar” bo‘limi: “Shaxslar” ro‘yxati, “Shaxsiy ma’lumotlar”, “Aloqa” va “Hujjatlar” guruhlari; pasport raqami yashirin ko‘rinishda"
+     },
+     {
+      "fayl": "docs/screenshots/3.png",
+      "izoh": "“Shablonlar” bo‘limi (qorong‘i mavzu): 11 ta tayyor shablon turi va maydonlar soni bilan, o‘ngda “O‘z shabloningizni yaratish” bo‘yicha o‘rinbosarlar jadvali"
+     },
+     {
+      "fayl": "docs/screenshots/4.png",
+      "izoh": "“Excel’dan ommaviy” bo‘limi: “Talaba arizasi” shabloni, to‘rt qatorli jadval va o‘rinbosarlarni ustunlarga moslashtirish jadvali"
+     }
+    ]
+   },
+   {
+    "sarlavha": "Asosiy amallar",
+    "matn": [
+     "**Profil yaratish**",
+     "1. “Profillar” bo‘limini oching va “Qo‘shish” tugmasini bosing.",
+     "2. “Profil nomi” maydoniga tushunarli nom yozing, masalan, “Men”, “Onam”, “O‘g‘lim”.",
+     "3. “Shaxsiy ma’lumotlar”, “Aloqa”, “Hujjatlar”, “Ish va o‘qish” guruhlaridagi maydonlarni to‘ldiring. Ariza yo‘llanadigan rahbar ma’lumotlarini “Ariza kimga yoziladi (rahbar)” guruhiga kiriting.",
+     "4. “Saqlash” tugmasini bosing. Holat satrida “Saqlandi” yozuvi chiqadi.",
+     "5. Profilni o‘chirish uchun uni ro‘yxatda tanlab, “O‘chirish” tugmasini bosing va so‘rovni tasdiqlang. O‘chirilgan profilni tiklab bo‘lmaydi.",
+     "Pasport raqami ikki harf va yetti raqamdan, JSHSHIR esa 14 raqamdan iborat bo‘lmasa, dastur ogohlantiradi. Oila a’zolari uchun profil yaratishda “Nusxa” tugmasidan foydalanish qulay: umumiy ma’lumotlar (manzil, telefon) ko‘chiriladi, faqat farqli maydonlarni o‘zgartirasiz.",
+     "**Tayyor shablon bo‘yicha hujjat tayyorlash**",
+     "1. “Hujjat tayyorlash” bo‘limida chapdagi ro‘yxatdan shablonni tanlang yoki “Qidirish...” maydoniga nomini yozing.",
+     "2. “Kim uchun:” ro‘yxatidan profilni tanlang. Profilga mos qatorlar avtomatik to‘ladi.",
+     "3. “Ma’lumot” ustunida “Qo‘lda kiritiladi” deb ko‘rsatilgan qatorlarning “Qiymat” katagini to‘ldiring, masalan, ta’til boshlanish sanasi yoki ish yili.",
+     "4. “Ko‘rinish” varag‘ida tayyor hujjat matnini o‘qib chiqing.",
+     "5. “Papka” maydonida saqlash joyini (“Tanlash...” tugmasi orqali) va “Fayl nomi” namunasini belgilang.",
+     "6. Kerak bo‘lsa “PDF ham yaratish” bayrog‘ini belgilang.",
+     "7. “Hujjatni yaratish” tugmasini bosing. Bo‘sh maydonlar qolgan bo‘lsa, dastur ularni sanab, davom etishni so‘raydi.",
+     "8. Holat satridagi “Yaratildi” xabaridan so‘ng faylni “Ochish” orqali ko‘ring.",
+     "Fayl nomi namunasida {FISH}, {SANA} kabi bitta jingalak qavsdagi nomlar qiymat bilan almashtiriladi. Papkada shu nomli fayl bo‘lsa, yangi faylga “(2)” qo‘shiladi, mavjud fayl ustiga yozilmaydi.",
+     "**O‘z shabloningizni yaratish va qo‘shish**",
+     "1. Word’da oddiy hujjat yozing. O‘zgaradigan joylarga qo‘sh jingalak qavsda nom qo‘ying, masalan, {{FISH}}, {{SANA}}, {{MANZIL}}, {{TELEFON}}, {{TASHKILOT}}, {{LAVOZIM}}, {{GURUH}}.",
+     "2. Mavjud nomlarning to‘liq ro‘yxati “Shablonlar” bo‘limining o‘ng panelida keltirilgan; nomni ikki marta bossangiz, u nusxalanadi.",
+     "3. Ro‘yxatda yo‘q nom (masalan, {{KURS}}) ham ishlatilishi mumkin: to‘ldirishda uning qiymati qo‘lda so‘raladi va keyingi safar eslab qolinadi.",
+     "4. Faylni .docx formatida saqlang.",
+     "5. “Shablonlar” bo‘limida “Qo‘shish...” tugmasini bosib, faylni tanlang. Fayl kutubxonaga nusxalanadi.",
+     "Shrift, qalinlik, jadval va kolontitullardagi formatlash to‘ldirishda saqlanadi. Bir martalik hujjat uchun faylni kutubxonaga qo‘shmasdan “Boshqa .docx faylni ochish...” orqali ham to‘ldirish mumkin.",
+     "**Excel’dan ommaviy yaratish**",
+     "1. Excel faylining birinchi qatoriga ustun nomlarini yozing, masalan, “Familiya”, “Ism”, “Otasining ismi”, “Guruh”, “Telefon”. Har bir keyingi qator bitta shaxs.",
+     "2. “Excel’dan ommaviy” bo‘limida “Shablon” ro‘yxatidan shablonni tanlang.",
+     "3. “Jadval” qatoridagi “Tanlash...” tugmasi orqali .xlsx yoki .csv faylni tanlang. Excel faylida bir nechta varaq bo‘lsa, “Varaq” ro‘yxatidan keraklisini belgilang.",
+     "4. “Moslashtirish” jadvalida har bir o‘rinbosarga tanlangan ustunni tekshiring. “(avtomatik)” – qiymat hisoblanadi (masalan, to‘liq F.I.Sh.), “(yo‘q)” – ustun topilmagan.",
+     "5. Barcha hujjatlarda bir xil bo‘ladigan qiymatni (masalan, tashkilot nomi) “Doimiy qiymat” ustuniga yozing.",
+     "6. “Fayl nomi” namunasini (masalan, {FISH}) va “Papka” ni belgilang, kerak bo‘lsa “PDF ham yaratish” ni yoqing.",
+     "7. “Hujjatlarni yaratish” tugmasini bosing. Natijada nechta hujjat yaratilgani haqida xabar chiqadi.",
+     "**Shablonlar kutubxonasini boshqarish**",
+     "- “Word’da ochish” – shablonni Word’da ko‘rish yoki tahrirlash uchun ochadi.",
+     "- “Nusxa olish” – tayyor shablondan o‘zingiz o‘zgartira oladigan nusxa yaratadi.",
+     "- “Nomini o‘zgartirish” va “Olib tashlash” – siz qo‘shgan shablonlar uchun.",
+     "- “To‘ldirish” – tanlangan shablonni “Hujjat tayyorlash” bo‘limida ochadi.",
+     "**Tayyor hujjatni tekshirish**",
+     "1. Yaratilgan faylni “Ochish” tugmasi yoki papka orqali oching.",
+     "2. F.I.Sh., sana, manzil va rahbar ma’lumotlari to‘g‘ri joyda ekanini tekshiring.",
+     "3. Hujjatda {{...}} ko‘rinishidagi to‘ldirilmagan joy qolmaganiga ishonch hosil qiling.",
+     "4. Kerak bo‘lsa hujjatni Word’da qo‘lda tahrirlang, so‘ng chop eting va imzolang."
+    ]
+   },
+   {
+    "sarlavha": "Sozlamalar",
+    "matn": [
+     "- **Til.** “Sozlamalar” menyusidagi “Til” bandidan “O‘zbekcha”, “Русский” yoki “English” ni tanlang. Tilni o‘zgartirish uchun dastur qayta ishga tushiriladi.",
+     "- **Mavzu.** “Sozlamalar” – “Mavzu” bandidan “Yorug‘”, “Qorong‘i” yoki “Tizim bo‘yicha” ni tanlang (3-rasmda qorong‘i mavzu).",
+     "- **Parol bilan himoya.** “Profillar” bo‘limidagi “Parol bilan himoya” tugmasi orqali “Parol qo‘yish...”, “Parolni o‘zgartirish...” yoki “Parolni olib tashlash” amallarini bajaring. Parol ikki marta kiritiladi.",
+     "- **Eslab qolinadigan qiymatlar.** Oxirgi tanlangan profil, saqlash papkasi, “PDF ham yaratish” holati va qo‘lda kiritilgan maydonlar qiymatlari keyingi safar uchun saqlanadi.",
+     "- **Saqlash papkasi.** Standart holatda hujjatlar “Hujjatlar” papkasidagi “Arizalar” katalogiga saqlanadi. Boshqa papkani “Tanlash...” tugmasi orqali belgilasangiz, u keyingi safar ham taklif qilinadi.",
+     "- **Yordam.** “Yordam” – “Qo‘llanma” bandi dastur ichidagi qisqa qo‘llanmani ochadi, “Dastur haqida” bandida versiya va muallif ko‘rsatiladi."
+    ]
+   },
+   {
+    "sarlavha": "Ma’lumotlarni saqlash va xavfsizlik",
+    "matn": [
+     "Barcha ma’lumotlar kompyuteringizda, %APPDATA%\\BahtiyorSoft\\shablon-toldirgich papkasida saqlanadi:",
+     "- profiles.json – profillar. Parol qo‘yilgan bo‘lsa, fayl mazmuni Fernet (AES) usulida shifrlanadi, shifrlash kaliti paroldan PBKDF2-SHA256 orqali olinadi;",
+     "- templates papkasi – siz kutubxonaga qo‘shgan shablonlar nusxasi;",
+     "- sozlamalar fayli – til, mavzu, oxirgi papka va boshqa tanlovlar.",
+     "Dastur internetga hech narsa yubormaydi.",
+     "Shablon fayli hech qachon o‘zgartirilmaydi: natija har doim yangi faylga yoziladi. Agar saqlash joyi shablon faylining o‘zi bo‘lsa, dastur amalni rad etadi. Papkada bir xil nomli fayl bo‘lsa, yangi nom beriladi.",
+     "Pasport va JSHSHIR ekranda yashirin ko‘rsatiladi. Ularni ko‘rish va tahrirlash uchun “Maxfiy ma’lumotni ko‘rsatish” bayrog‘ini yoqing. Kompyuterdan boshqalar ham foydalansa, profillarga parol qo‘ying.",
+     "**Muhim:** parolni unutsangiz, shifrlangan profillarni tiklab bo‘lmaydi. Parolni ishonchli joyda saqlang.",
+     "Yaratilgan hujjatlar shifrlanmaydi, ular siz tanlagan papkada oddiy fayl sifatida turadi. Shaxsiy ma’lumotli hujjatlarni keraksiz bo‘lganda o‘chiring yoki himoyalangan joyda saqlang."
+    ]
+   },
+   {
+    "sarlavha": "Ko‘p uchraydigan savollar va muammolar",
+    "matn": [
+     "**Shablonda {{...}} o‘rinbosarlari topilmadi deyilyapti.** O‘rinbosar ikki tomonlama qo‘sh jingalak qavsda yozilganini tekshiring: {{FISH}}. Bitta qavs ({FISH}) faqat fayl nomi namunasida ishlatiladi.",
+     "**O‘rinbosar “Qo‘lda kiritiladi” deb ko‘rsatilmoqda.** Bu nom profil maydonlariga mos kelmadi. Qiymatni qo‘lda kiriting yoki nomni “Shablonlar” bo‘limidagi ro‘yxatdagi nomga almashtiring.",
+     "**PDF yaratilmadi.** “PDF uchun Microsoft Word yoki LibreOffice kerak” xabari chiqsa, ulardan birini o‘rnating. Bu holda .docx fayl baribir yaratiladi.",
+     "**Faylga yozib bo‘lmadi.** Natija fayli Word’da ochiq bo‘lishi mumkin. Faylni yoping va qayta urinib ko‘ring.",
+     "**Profillar ko‘rinmayapti, “Profillar qulflangan” yozuvi chiqdi.** Profillar parol bilan himoyalangan. Parolni kiriting va “Ochish” tugmasini bosing.",
+     "**Excel jadvali o‘qilmadi yoki ustunlar noto‘g‘ri moslandi.** Birinchi qator ustun nomlari ekanini tekshiring. “Moslashtirish” jadvalida ustunni qo‘lda tanlang.",
+     "**Jadvalda ma’lumot yo‘q degan xabar chiqdi.** Faylda birinchi qatordan tashqari kamida bitta to‘ldirilgan qator bo‘lishi kerak. To‘liq bo‘sh qatorlar hisobga olinmaydi.",
+     "**CSV fayldagi o‘zbekcha harflar buzilgan.** Faylni UTF-8 kodlashida saqlang; dastur UTF-8 va Windows-1251 kodlashlarini o‘qiydi.",
+     "**SmartScreen dasturni ochishga ruxsat bermayapti.** “Batafsil”, so‘ng “Baribir ishga tushirish” ni bosing. Faylni faqat rasmiy GitHub sahifasidan yuklab oling.",
+     "**Hujjatdagi qiymat boshqa shriftda chiqdi.** Qiymat o‘rinbosar boshlangan joydagi formatni oladi. Shablonda o‘rinbosarni to‘liq bir xil shriftda yozing.",
+     "**Bir xil nomli fayl qayta yaratilganda eski fayl o‘chib ketmaydimi?** Yo‘q. Dastur mavjud fayl ustiga yozmaydi, yangi faylga “(2)”, “(3)” qo‘shadi."
+    ]
+   }
+  ]
+ },
+ "uslubiy": {
+  "sarlavha": "Uslubiy ko‘rsatma",
+  "bolimlar": [
+   {
+    "sarlavha": "Uslubiy ko‘rsatmaning maqsadi va vazifalari",
+    "matn": [
+     "Ushbu uslubiy ko‘rsatma “Ariza va shablon to‘ldirgich” dasturidan oliy ta’lim muassasalari, kollej va texnikumlarda o‘quv mashg‘ulotlarida, shuningdek tashkilotlarning kadrlar bo‘limi, devonxona va dekanat faoliyatida foydalanish tartibini belgilaydi.",
+     "Maqsad – o‘quvchi va xodimlarda rasmiy hujjatlarni shablon asosida tayyorlash, ish yuritish hujjatlarining tuzilishini tushunish, takrorlanuvchi ishlarni avtomatlashtirish va shaxsiy ma’lumotlarni xavfsiz qayta ishlash ko‘nikmalarini shakllantirish.",
+     "Vazifalar:",
+     "- ariza, tushuntirish xati, bildirishnoma, ishonchnoma va obyektivkaning rekvizitlari va tuzilishi bilan tanishtirish;",
+     "- shablon tushunchasini, o‘zgarmas va o‘zgaruvchan qismlarni ajratishni o‘rgatish;",
+     "- Word hujjatida o‘rinbosarlar bilan o‘z shablonini yaratishni mashq qildirish;",
+     "- jadvaldagi ma’lumotlar asosida ommaviy hujjat yaratish texnologiyasini ko‘rsatish;",
+     "- shaxsiy ma’lumotlarni himoyalash, parol va shifrlash tushunchalarini amaliy misolda tushuntirish.",
+     "Ko‘rsatma o‘qituvchiga mashg‘ulot rejasini, amaliy topshiriqlar to‘plamini, baholash mezonlari va nazorat savollarini taqdim etadi. Mashg‘ulot yakunida talaba nafaqat dastur yordamida hujjat tayyorlay oladi, balki shablonning tuzilishini, o‘rinbosarlarning vazifasini va ma’lumotlarni himoyalash zarurligini tushuntira oladi. Ko‘rsatmani fan dasturi va guruh tayyorgarligiga qarab qisqartirish yoki kengaytirish mumkin."
+    ]
+   },
+   {
+    "sarlavha": "Qo‘llash sohasi va maqsadli auditoriya",
+    "matn": [
+     "Dasturdan quyidagi fanlar va mashg‘ulotlarda foydalanish tavsiya etiladi:",
+     "- “Ish yuritish”, “Hujjatshunoslik”, “Kotiblik ishi”, “Davlat tilida ish yuritish” fanlari;",
+     "- “Informatika va axborot texnologiyalari”, “Ofis dasturlari” fanlarida matnli hujjatlarni avtomatlashtirish mavzusi;",
+     "- “Axborot xavfsizligi asoslari” fanida shaxsiy ma’lumotlarni himoyalash va shifrlash mavzusi;",
+     "- “Kadrlar boshqaruvi”, “Menejment” yo‘nalishlarida kadrlar hujjatlari bilan ishlash;",
+     "- kollej va texnikumlarda kotib, ofis menejeri, kompyuter operatori mutaxassisliklari bo‘yicha amaliyot.",
+     "Maqsadli auditoriya: bakalavriat talabalari, kollej va texnikum o‘quvchilari, fan o‘qituvchilari, shuningdek tashkilotlarning kadrlar bo‘limi, devonxona, dekanat va kafedra xodimlari.",
+     "Kasbiy faoliyatda dastur dekanatda talabalar arizalarini guruh ro‘yxati asosida tayyorlash, kafedrada xodimlar uchun bir xil xatlar va ma’lumotnomalar tayyorlash, kadrlar bo‘limida ta’til va ishga qabul arizalarini tayyorlashda qo‘llanishi mumkin.",
+     "Fanlararo bog‘liqlik nuqtai nazaridan dastur ish yuritish (hujjat mazmuni va rekvizitlari), informatika (fayl formatlari va avtomatlashtirish) va axborot xavfsizligi (shaxsiy ma’lumotlar himoyasi) fanlarini bitta amaliy topshiriqda birlashtirish imkonini beradi. Shu sababli undan integrallashgan mashg‘ulotlar va kurs ishlarida ham foydalanish mumkin.",
+     "Dastur o‘zbek, rus va ingliz tilidagi interfeysga ega bo‘lgani uchun uni turli ta’lim tillaridagi guruhlarda qo‘llash mumkin. Tayyor shablonlar o‘zbek tilida tuzilgan, rus yoki ingliz tilidagi hujjatlar uchun esa talabalar o‘z shablonlarini yaratadi, bu ham qo‘shimcha amaliy mashq bo‘lib xizmat qiladi."
+    ]
+   },
+   {
+    "sarlavha": "O‘quv mashg‘ulotida foydalanish tartibi",
+    "matn": [
+     "Quyida 80 daqiqalik amaliy mashg‘ulot rejasi keltirilgan. Mashg‘ulot kompyuter sinfida o‘tkaziladi, har bir kompyuterda dastur va Microsoft Word (yoki .docx ni ochadigan boshqa muharrir) bo‘lishi kerak. Internet talab qilinmaydi.",
+     "**Muhim tayyorgarlik:** mashg‘ulotda haqiqiy shaxsiy ma’lumotlar (haqiqiy pasport raqami, JSHSHIR) ishlatilmaydi. O‘qituvchi oldindan o‘ylab topilgan shartli ma’lumotlar to‘plamini va 10–15 qatorli namunaviy Excel jadvalini tayyorlaydi.",
+     "**Tashkiliy qism (5 daqiqa).** Davomat, mashg‘ulot mavzusi va maqsadini e’lon qilish: talaba mashg‘ulot oxirida tayyor shablon bo‘yicha ariza, o‘zi yaratgan shablon va jadval asosidagi hujjatlar to‘plamini tayyorlaydi.",
+     "**Nazariy qism (20 daqiqa).** Ariza va xatlarning rekvizitlari (kimga, kimdan, hujjat nomi, matn, sana, imzo); shablon tushunchasi; o‘rinbosar va uning nomi; Word hujjati ichida matnning bo‘laklarga bo‘linishi sababli oddiy qidirish-almashtirish ishonchsizligi; ommaviy pochta (mail merge) g‘oyasi; shaxsiy ma’lumotlarni himoyalash, parol va shifrlash tushunchalari.",
+     "Nazariy qism davomida o‘qituvchi proyektorda dasturning to‘rtta bo‘limini qisqacha namoyish qiladi va bitta tayyor arizani to‘ldirib ko‘rsatadi. Shuningdek, bir xil shablon asosida ikki xil shaxs uchun tayyorlangan hujjatlarni solishtirib, qaysi qismlar o‘zgarmas va qaysilari o‘zgaruvchan ekanini talabalar bilan birga aniqlaydi.",
+     "**Amaliy qism (45 daqiqa).**",
+     "1. Shartli ma’lumotlar bilan profil yaratish, maxfiy maydonlarning yashirilishini kuzatish (8 daqiqa).",
+     "2. Tayyor shablon (“Mehnat ta’tili berish to‘g‘risida ariza”) bo‘yicha hujjat tayyorlash, qo‘lda kiritiladigan maydonlarni to‘ldirish va “Ko‘rinish” varag‘ida tekshirish (10 daqiqa).",
+     "3. Word’da o‘z shablonini yaratish (masalan, “Dars qoldirish sababi haqida tushuntirish xati”), kutubxonaga qo‘shish va to‘ldirish (12 daqiqa).",
+     "Amaliy qism davomida o‘qituvchi sinf bo‘ylab yurib, talabalar duch kelgan muammolarni (o‘rinbosar bitta qavs bilan yozilgani, ustun nomi birinchi qatorda emasligi, fayl Word’da ochiq qolgani) individual hal qiladi va eng ko‘p uchragan xatolarni yakuniy qism uchun qayd etadi.",
+     "4. Namunaviy Excel jadvali asosida guruh uchun ommaviy hujjat yaratish (10 daqiqa).",
+     "5. Profillarga parol qo‘yish va dasturni qayta ochib, qulflanishni tekshirish (5 daqiqa).",
+     "**Yakuniy qism (10 daqiqa).** Natijalarni ko‘rib chiqish, tipik xatolarni (noto‘g‘ri yozilgan o‘rinbosar, moslanmagan ustun, bo‘sh qolgan maydon) muhokama qilish, mustaqil ish topshirig‘ini berish. Mashg‘ulot oxirida shartli profillar o‘chiriladi.",
+     "Mashg‘ulot natijasida har bir talabaning papkasida quyidagi fayllar bo‘lishi kutiladi: tayyor shablon bo‘yicha bitta ariza (.docx, imkon bo‘lsa .pdf), o‘zi yaratgan shablon fayli va u asosida to‘ldirilgan hujjat, ommaviy yaratish natijasidagi hujjatlar to‘plami. O‘qituvchi ushbu fayllarni yakuniy qismda tanlab ko‘rib chiqadi."
+    ],
+    "rasmlar": [
+     {
+      "fayl": "docs/screenshots/1.png",
+      "izoh": "“Hujjat tayyorlash” bo‘limi: chapda shablonlar ro‘yxati, o‘ngda “Mehnat ta’tili berish to‘g‘risida ariza” shablonining o‘rinbosarlari, ularga mos profil maydonlari va qiymatlari, pastda papka, fayl nomi va “Hujjatni yaratish” tugmasi"
+     }
+    ]
+   },
+   {
+    "sarlavha": "Amaliy topshiriqlar",
+    "matn": [
+     "**1-topshiriq. Profil va oila a’zolari.** Shartli ma’lumotlar bilan “Men” profilini yarating, so‘ng “Nusxa” orqali “Ukam” profilini tayyorlab, farqli maydonlarni o‘zgartiring. Kutilgan natija: ikkala profil “Shaxslar” ro‘yxatida, umumiy manzil va telefon ikkalasida ham bir xil.",
+     "**2-topshiriq. Tayyor ariza.** “Ishdan bo‘shash to‘g‘risida ariza” shablonini “Men” profili uchun to‘ldiring, fayl nomi namunasiga {FISH} ni qo‘shing va .docx yarating. Kutilgan natija: fayl nomida to‘liq F.I.Sh. bor, hujjatda sana va rahbar ma’lumotlari to‘g‘ri joyda.",
+     "**3-topshiriq. Qo‘lda kiritiladigan maydonlar.** “Mehnat ta’tili berish to‘g‘risida ariza” shablonida “Qo‘lda kiritiladi” deb belgilangan qatorlarni aniqlang va to‘ldiring. Kutilgan natija: talaba qaysi o‘rinbosarlar profildan, qaysilari qo‘lda to‘ldirilishini tushuntiradi va maydonlar soni ostida bo‘sh maydon qolmaydi.",
+     "**4-topshiriq. O‘z shabloningiz.** Word’da {{FISH}}, {{GURUH}}, {{SANA}} va ro‘yxatda yo‘q {{SABAB}} o‘rinbosarlari bilan tushuntirish xati shablonini yarating, bir joyda o‘rinbosarni qalin shriftda yozing. Kutilgan natija: dastur barcha o‘rinbosarlarni topadi, {{SABAB}} qo‘lda so‘raladi, qalin formatlash natijada saqlanadi.",
+     "**5-topshiriq. Ommaviy yaratish.** “Familiya”, “Ism”, “Otasining ismi”, “Guruh” ustunlari bo‘lgan 10 qatorli jadval asosida “Talaba arizasi” bo‘yicha hujjatlarni yarating, tashkilot nomini “Doimiy qiymat” ga yozing. Kutilgan natija: 10 ta alohida .docx fayl, har birining nomida talabaning F.I.Sh.si.",
+     "**6-topshiriq. CSV va kodlash.** Xuddi shu jadvalni CSV formatida saqlab, ommaviy yaratishni takrorlang. Kutilgan natija: talaba ajratgich va kodlash avtomatik aniqlanishini kuzatadi, o‘zbekcha harflar to‘g‘ri chiqadi.",
+     "**7-topshiriq. Himoya.** Profillarga parol qo‘ying, dasturni yopib qayta oching va profillar qulflanganini tekshiring; noto‘g‘ri parol kiritib ko‘ring. Kutilgan natija: noto‘g‘ri parolda “Parol noto‘g‘ri.” xabari chiqadi, profillar ochilmaydi.",
+     "**8-topshiriq. PDF.** Word o‘rnatilgan kompyuterda “PDF ham yaratish” bilan hujjat yarating. Kutilgan natija: .docx va .pdf fayllar bir papkada paydo bo‘ladi."
+    ],
+    "rasmlar": [
+     {
+      "fayl": "docs/screenshots/4.png",
+      "izoh": "“Excel’dan ommaviy” bo‘limi: “Talaba arizasi” shabloni, to‘rt qatorli jadval va o‘rinbosarlarni ustunlarga moslashtirish jadvali"
+     }
+    ]
+   },
+   {
+    "sarlavha": "Baholash mezonlari",
+    "matn": [
+     "Amaliy mashg‘ulot natijasi 100 ballik shkala bo‘yicha baholanadi:",
+     "- profillarning to‘g‘ri va to‘liq yaratilishi, shartli ma’lumotlardan foydalanilishi – 15 ball;",
+     "- tayyor shablon bo‘yicha hujjatning xatosiz tayyorlanishi – 15 ball;",
+     "- o‘z shablonining to‘g‘ri tuzilishi (rekvizitlar, o‘rinbosar nomlari, formatlash) – 25 ball;",
+     "- ommaviy yaratishning bajarilishi va ustunlarning to‘g‘ri moslanishi – 20 ball;",
+     "- himoya choralarining qo‘llanishi (parol, maxfiy maydonlar, mashg‘ulot oxirida ma’lumotlarni o‘chirish) – 10 ball;",
+     "- nazorat savollariga javob – 15 ball.",
+     "86–100 ball – “a’lo”, 71–85 ball – “yaxshi”, 55–70 ball – “qoniqarli”, 55 balldan kam – “qoniqarsiz”.",
+     "O‘z shablonini baholashda hujjat mazmunining ish yuritish talablariga mosligi (kimga va kimdan yozilgani, hujjat nomi, sana va imzo joyi) alohida hisobga olinadi.",
+     "Ommaviy yaratish topshirig‘ida o‘qituvchi tasodifiy ikki hujjatni ochib, ulardagi F.I.Sh., guruh va sana to‘g‘ri qo‘yilganini tekshiradi. Juftlikda bajarilgan ishda har bir talaba kamida bitta shablonni mustaqil tayyorlagan bo‘lishi kerak.",
+     "Baholash natijalari talabaga izoh bilan yetkaziladi: qaysi rekvizit tushib qolgani, qaysi o‘rinbosar noto‘g‘ri nomlangani yoki qaysi himoya chorasi qo‘llanmagani ko‘rsatiladi. Bu izohlar mustaqil ishni bajarishda yo‘l-yo‘riq bo‘lib xizmat qiladi."
+    ]
+   },
+   {
+    "sarlavha": "Nazorat savollari",
+    "matn": [
+     "1. Ariza qanday rekvizitlardan iborat?",
+     "2. Hujjat shabloni nima va uning o‘zgarmas hamda o‘zgaruvchan qismlari qanday ajratiladi?",
+     "3. Dasturda o‘rinbosar qanday yoziladi va fayl nomi namunasidagi nomdan nimasi bilan farq qiladi?",
+     "4. Nima uchun Word hujjatida oddiy qidirish-almashtirish ba’zan o‘rinbosarni topa olmaydi?",
+     "5. To‘liq F.I.Sh. va qisqa F.I.Sh. qanday hisoblanadi?",
+     "6. Ommaviy yaratishda jadvalning birinchi qatoriga qanday talab qo‘yiladi?",
+     "7. “Doimiy qiymat” ustuni nima uchun kerak?",
+     "8. Qaysi profil maydonlari maxfiy hisoblanadi va ular ekranda qanday ko‘rsatiladi?",
+     "9. Profillarga parol qo‘yilganda ma’lumotlar qanday himoyalanadi va parol unutilsa nima bo‘ladi?",
+     "10. Nima uchun dastur natijani shablon faylining ustiga yozmaydi?"
+    ]
+   },
+   {
+    "sarlavha": "Mustaqil ish uchun tavsiyalar",
+    "matn": [
+     "- O‘zingiz tez-tez yozadigan hujjat (masalan, dekanatga ariza yoki ma’lumotnoma so‘rash) uchun shablon yarating va uni kutubxonaga qo‘shing.",
+     "- Mavjud tayyor shablonni “Nusxa olish” orqali ko‘paytirib, uni o‘z tashkilotingiz talablariga moslab tahrirlang.",
+     "- O‘rinbosar nomlarini profil maydonlari ro‘yxatidagi nomlar bilan tanlang: shunda ular avtomatik to‘ladi.",
+     "- Guruh sardori yoki faol sifatida guruh ro‘yxatidan foydalanib, tadbir uchun taklifnomalar yoki ma’lumotnomalarni ommaviy tayyorlab ko‘ring.",
+     "- Shablon tayyorlashda bitta o‘rinbosar ichida formatni o‘zgartirmang: qiymat o‘rinbosar boshlangan joydagi formatni oladi.",
+     "- Ish yuritish bo‘yicha amaldagi talablarni o‘rganib, tayyor shablonlarning rekvizitlarini ular bilan solishtiring va farqlarni yozib boring.",
+     "- Mustaqil ish natijasini shablon fayli va u asosida yaratilgan hujjat ko‘rinishida topshiring.",
+     "- Ommaviy rejimni sinash uchun kamida 10 qatorli shartli jadval tuzing va natijada yaratilgan fayllar soni qatorlar soniga tengligini tekshiring.",
+     "- Kutubxonadagi har bir tayyor shablonni ochib, unda qaysi o‘rinbosarlar ishlatilganini va ularning qaysilari profildan olinishini jadval ko‘rinishida yozib chiqing. Bu sizga o‘z shabloningizni tuzishda yordam beradi."
+    ]
+   },
+   {
+    "sarlavha": "Xavfsizlik va axborot madaniyati qoidalari",
+    "matn": [
+     "- O‘quv mashg‘ulotlarida haqiqiy pasport raqami, JSHSHIR va boshqa shaxsiy ma’lumotlarni kiritmang, faqat shartli ma’lumotlardan foydalaning.",
+     "- Umumiy foydalanishdagi kompyuterda ishlaganda profillarga parol qo‘ying yoki mashg‘ulot oxirida profillarni o‘chiring.",
+     "- Boshqa shaxsning ma’lumotlarini faqat uning roziligi bilan profilga kiriting. Shaxsiy ma’lumotlarni qayta ishlash qonunchilik talablariga rioya qilishni talab qiladi.",
+     "- Parolni boshqalarga bermang va uni ishonchli joyda saqlang: unutilgan parolni tiklab bo‘lmaydi.",
+     "- Yaratilgan hujjatlar shifrlanmaydi. Shaxsiy ma’lumotli fayllarni umumiy papkalarda va fleshkalarda qoldirmang.",
+     "- Dasturni faqat rasmiy GitHub sahifasidan yuklab oling, noma’lum manbalardagi shablonlarni ochishdan oldin ularning mazmunini tekshiring.",
+     "- Avtomatik tayyorlangan hujjatni imzolash va topshirishdan oldin albatta o‘qib chiqing: hujjat mazmuni uchun uni imzolagan shaxs javobgar.",
+     "- Ommaviy yaratish uchun ishlatiladigan jadvallarda faqat hujjat uchun zarur ustunlarni qoldiring. Keraksiz shaxsiy ma’lumotlarni (masalan, pasport raqamini) jadvalga qo‘shmang.",
+     "- Ish yakunida vaqtinchalik jadval va hujjat nusxalarini o‘chiring, savatchani ham tozalang."
+    ],
+    "rasmlar": [
+     {
+      "fayl": "docs/screenshots/2.png",
+      "izoh": "“Profillar” bo‘limi: “Shaxslar” ro‘yxati, “Shaxsiy ma’lumotlar”, “Aloqa” va “Hujjatlar” guruhlari; pasport raqami yashirin ko‘rinishda"
+     }
+    ]
+   }
+  ]
+ },
+ "muallif": "Hakimov Bahtiyorjon"
+}
