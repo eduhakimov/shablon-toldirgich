@@ -77,6 +77,16 @@ def scan(path) -> List[str]:
     return found
 
 
+_CTRL_RE = re.compile(r"[\x00-\x08\x0c\x0e-\x1f\x7f\ufffe\uffff]")
+
+
+def clean_value(v) -> str:
+    """Qiymatni Word XML ga yaroqli qiladi: Excel yoki CSV dan kelgan CR LF va VT (Alt+Enter)
+    yangi qatorga aylanadi, boshqa boshqaruv belgilari olib tashlanadi (aks holda lxml xato beradi)."""
+    s = str(v).replace("\r\n", "\n").replace("\r", "\n").replace("\x0b", "\n")
+    return _CTRL_RE.sub("", s)
+
+
 def _set_text(t, text):
     t.text = text
     if text and (text[0].isspace() or text[-1].isspace()):
@@ -124,7 +134,7 @@ def _fill_paragraph(p, values: Dict[str, str], keep_missing: bool) -> Tuple[int,
     for m in reversed(matches):
         name = m.group(1).strip()
         if name in values and values[name] is not None:
-            val = str(values[name])
+            val = clean_value(values[name])
         else:
             missing.append(name)
             if keep_missing:

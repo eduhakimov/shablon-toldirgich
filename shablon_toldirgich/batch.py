@@ -30,14 +30,14 @@ def read_table(path, sheet: str = None, limit: int = 100000) -> Tuple[List[str],
     if p.suffix.lower() == ".csv":
         import csv
         raw = p.read_bytes()
-        text = None
-        for enc in ("utf-8-sig", "cp1251"):
-            try:
-                text = raw.decode(enc)
-                break
-            except UnicodeDecodeError:
-                continue
-        dialect = csv.Sniffer().sniff(text[:2000], delimiters=",;\t") if text.strip() else csv.excel
+        try:
+            text = raw.decode("utf-8-sig")
+        except UnicodeDecodeError:
+            text = raw.decode("cp1251", errors="replace")
+        try:
+            dialect = csv.Sniffer().sniff(text[:2000], delimiters=",;\t") if text.strip() else csv.excel
+        except csv.Error:
+            dialect = csv.excel            # bitta ustunli jadval: ajratgichni aniqlab bo'lmaydi
         rows = list(csv.reader(text.splitlines(), dialect))
         sheets = []
     else:
